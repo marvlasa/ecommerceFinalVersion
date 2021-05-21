@@ -6,11 +6,12 @@ import Login from "./pages/login/Login";
 import Product from "./pages/product/Product";
 import ProductDetail from "./pages/productDetail/ProductDetail";
 import Register from "./pages/register/Register";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
-      <Register />
+      <Home />
     </div>
   );
 }
