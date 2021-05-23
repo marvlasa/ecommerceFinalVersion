@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Header() {
+  const [headerMenu, setHeaderMenu] = useState("none");
+  const handleClick = () => {
+    if (headerMenu === "none") {
+      setHeaderMenu("block");
+    } else {
+      setHeaderMenu("none");
+    }
+  };
   return (
     <header>
       <div class="header-area">
@@ -101,6 +110,7 @@ function Header() {
                       tabindex="0"
                       class="slicknav_btn slicknav_collapsed"
                       style={{ outline: "none" }}
+                      onClick={handleClick}
                     >
                       <span class="slicknav_menutxt">MENU</span>
                       <span class="slicknav_icon">
@@ -113,131 +123,27 @@ function Header() {
                       class="slicknav_nav slicknav_hidden"
                       aria-hidden="true"
                       role="menu"
-                      style={{ display: "none" }}
+                      style={{ display: headerMenu }}
                     >
                       <li>
-                        <a href="index.html" role="menuitem" tabindex="-1">
+                        <Link to="/" role="menuitem" tabIndex="-1">
                           Home
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="product.html" role="menuitem" tabindex="-1">
-                          Product
-                        </a>
+                        <Link to="/products" role="menuitem" tabIndex="-1">
+                          Products
+                        </Link>
                       </li>
                       <li>
-                        <a href="about.html" role="menuitem" tabindex="-1">
+                        <Link to="/about" role="menuitem" tabIndex="-1">
                           About
-                        </a>
-                      </li>
-                      <li class="slicknav_collapsed slicknav_parent">
-                        <a
-                          href="#"
-                          role="menuitem"
-                          aria-haspopup="true"
-                          tabindex="-1"
-                          class="slicknav_item slicknav_row"
-                          style={{ outline: "none" }}
-                        >
-                          <a href="#" tabindex="-1">
-                            Page
-                          </a>
-                          <span class="slicknav_arrow">+</span>
-                        </a>
-                        <ul
-                          class="submenu slicknav_hidden"
-                          role="menu"
-                          aria-hidden="true"
-                          style={{ display: "none" }}
-                        >
-                          <li>
-                            <a href="login.html" role="menuitem" tabindex="-1">
-                              Login
-                            </a>
-                          </li>
-                          <li>
-                            <a href="card.html" role="menuitem" tabindex="-1">
-                              Card
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="categories.html"
-                              role="menuitem"
-                              tabindex="-1"
-                            >
-                              Categories
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="checkout.html"
-                              role="menuitem"
-                              tabindex="-1"
-                            >
-                              Checkout
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="product_details.html"
-                              role="menuitem"
-                              tabindex="-1"
-                            >
-                              Product Details
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="slicknav_collapsed slicknav_parent">
-                        <a
-                          href="#"
-                          role="menuitem"
-                          aria-haspopup="true"
-                          tabindex="-1"
-                          class="slicknav_item slicknav_row"
-                          style={{ outline: "none" }}
-                        >
-                          <a href="blog.html" tabindex="-1">
-                            Blog
-                          </a>
-                          <span class="slicknav_arrow">+</span>
-                        </a>
-                        <ul
-                          class="submenu slicknav_hidden"
-                          role="menu"
-                          aria-hidden="true"
-                          style={{ display: "none" }}
-                        >
-                          <li>
-                            <a href="blog.html" role="menuitem" tabindex="-1">
-                              Blog
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="blog_details.html"
-                              role="menuitem"
-                              tabindex="-1"
-                            >
-                              Blog Details
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="elements.html"
-                              role="menuitem"
-                              tabindex="-1"
-                            >
-                              Elements
-                            </a>
-                          </li>
-                        </ul>
+                        </Link>
                       </li>
                       <li>
-                        <a href="contact.html" role="menuitem" tabindex="-1">
+                        <Link to="/contact" role="menuitem" tabIndex="-1">
                           Contact
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
