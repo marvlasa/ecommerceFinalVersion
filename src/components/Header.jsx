@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -29,23 +30,17 @@ function Header() {
                   <nav>
                     <ul id="navigation">
                       <li>
-                        <a href="/#">Home</a>
+                        <Link to="/">Home</Link>
                       </li>
                       <li>
-                        <a href="/#">Product</a>
+                        <Link to="/products">Products</Link>
                       </li>
                       <li>
-                        <a href="/#">About</a>
+                        <Link to="/about">About</Link>
                       </li>
                       <li>
                         <a href="/#">Page</a>
                         <ul class="submenu">
-                          <li>
-                            <a href="/#">Login</a>
-                          </li>
-                          <li>
-                            <a href="/#">Card</a>
-                          </li>
                           <li>
                             <a href="/#">Categories</a>
                           </li>
@@ -58,21 +53,7 @@ function Header() {
                         </ul>
                       </li>
                       <li>
-                        <a href="/#">Blog</a>
-                        <ul class="submenu">
-                          <li>
-                            <a href="/#">Blog</a>
-                          </li>
-                          <li>
-                            <a href="/#">Blog Details</a>
-                          </li>
-                          <li>
-                            <a href="/#">Elements</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="/#">Contact</a>
+                        <Link to="/contact">Contact</Link>
                       </li>
                     </ul>
                   </nav>
@@ -94,15 +75,17 @@ function Header() {
                       </form>
                     </li>
                     <li>
-                      <a href="/#" class="account-btn" target="_blank">
+                      <Link to="/login" class="account-btn">
                         My Account
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <div class="card-stor">
-                        <img src="assets/img/icon/card.svg" alt="" />
-                        <span>0</span>
-                      </div>
+                      <Link to="/cart">
+                        <div class="card-stor">
+                          <img src="assets/img/icon/card.svg" alt="" />
+                          <span>0</span>
+                        </div>
+                      </Link>
                     </li>
                   </ul>
                 </div>

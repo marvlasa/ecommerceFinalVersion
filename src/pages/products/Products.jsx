@@ -1,21 +1,13 @@
 import React from "react";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import { useEffect } from "react";
 
 function Login() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
-      <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-          <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-              <img src="assets/img/logo/loder.png" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <Header />
       <main>
         <div class="slider-area">
           <div class="slider-active">
@@ -58,7 +50,7 @@ function Login() {
             <div class="row justify-content-center">
               <div class="col-xl-7 col-lg-8 col-md-10">
                 <div
-                  class="section-tittle mb-60 text-center wow fadeInUp"
+                  class="section-tittle mb-60 text-center wow"
                   data-wow-duration="1s"
                   data-wow-delay=".2s"
                 >
@@ -1093,7 +1085,7 @@ function Login() {
       </main>
       <Footer />
       <div id="back-top">
-        <a title="Go to Top" href="/#">
+        <a title="Go to Top" href="/products#">
           {" "}
           <i class="fas fa-level-up-alt"></i>
         </a>

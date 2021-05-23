@@ -1,21 +1,13 @@
 import React from "react";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import { useEffect } from "react";
 
 function Login() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div class="full-wrapper">
-      <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-          <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-              <img src="assets/img/logo/loder.png" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <Header />
       <main>
         <div class="slider-area">
           <div class="slider-active">

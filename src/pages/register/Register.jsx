@@ -1,18 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Register() {
   return (
     <div>
-      <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-          <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-              <img src="assets/img/logo/loder.png" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
       <main class="login-bg">
         <div class="register-form-area">
           <div class="container">
@@ -44,7 +35,8 @@ function Register() {
                   <div class="register-footer">
                     <p>
                       Already have an account?
-                      <a href="/#"> Login</a> here
+                      <Link to="/login"> Login </Link>
+                      here
                     </p>
                     <button class="submit-btn3">Sign Up</button>
                   </div>
