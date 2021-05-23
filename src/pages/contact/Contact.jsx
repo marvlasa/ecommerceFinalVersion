@@ -31,10 +31,10 @@ function Contact() {
                       <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item">
-                            <a href="index.html">Home</a>
+                            <a href="/#">Home</a>
                           </li>
                           <li class="breadcrumb-item">
-                            <a href="#">Contact</a>
+                            <a href="/#">Contact</a>
                           </li>
                         </ol>
                       </nav>
@@ -159,7 +159,7 @@ function Contact() {
       </main>
       <Footer />
       <div id="back-top">
-        <a title="Go to Top" href="#">
+        <a title="Go to Top" href="/#">
           {" "}
           <i class="fas fa-level-up-alt"></i>
         </a>
