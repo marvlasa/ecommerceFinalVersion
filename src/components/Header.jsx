@@ -26,9 +26,11 @@ function Header() {
             >
               <div class="header-left d-flex align-items-center">
                 <div class="logo">
-                  <a href="/#">
-                    <img src="assets/img/logo/logo.png" alt="" />
-                  </a>
+                  <img
+                    src="assets/img/logo/logo.png"
+                    alt=""
+                    style={{ width: "140px" }}
+                  />
                 </div>
                 <div class="logo2">
                   <a href="/#">
@@ -47,20 +49,7 @@ function Header() {
                       <li>
                         <Link to="/about">About</Link>
                       </li>
-                      <li>
-                        <a href="/#">Page</a>
-                        <ul class="submenu">
-                          <li>
-                            <a href="/#">Categories</a>
-                          </li>
-                          <li>
-                            <a href="/#">Checkout</a>
-                          </li>
-                          <li>
-                            <a href="/#">Product Details</a>
-                          </li>
-                        </ul>
-                      </li>
+
                       <li>
                         <Link to="/contact">Contact</Link>
                       </li>
@@ -143,6 +132,16 @@ function Header() {
                       <li>
                         <Link to="/contact" role="menuitem" tabIndex="-1">
                           Contact
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/login" role="menuitem" tabIndex="-1">
+                          My Account
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/cart" role="menuitem" tabIndex="-1">
+                          Cart
                         </Link>
                       </li>
                     </ul>

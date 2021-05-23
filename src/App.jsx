@@ -6,6 +6,8 @@ import ProductDetail from "./pages/productDetail/ProductDetail";
 import Contact from "./pages/contact/Contact";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import Cart from "./pages/cart/Cart";
+
 import Header from "./components/Header";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -22,6 +24,7 @@ function App() {
           <Route path="/contact" component={Contact} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/cart" component={Cart} />
         </Switch>
       </BrowserRouter>
     </div>

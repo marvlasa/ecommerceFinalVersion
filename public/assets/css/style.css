@@ -2163,9 +2163,10 @@ hr {
   top: 0;
   left: 0;
 }
+
 @media only screen and (min-width: s 1200px) and (max-width: 1600px) {
   .header-area .menu-wrapper .logo img {
-    width: 165px;
+    width: 145px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
