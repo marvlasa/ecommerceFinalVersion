@@ -47,7 +47,7 @@ function Home() {
                         data-animation="fadeInUp"
                         data-delay=".7s"
                       >
-                        <a href="industries.html" class="btn hero-btn">
+                        <a href="/#" class="btn hero-btn">
                           Discover More
                         </a>
                       </div>
@@ -168,7 +168,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -183,7 +183,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -198,7 +198,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -222,7 +222,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -237,7 +237,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -252,7 +252,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -276,7 +276,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -291,7 +291,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -306,7 +306,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -330,7 +330,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -345,7 +345,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -360,7 +360,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -384,7 +384,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -399,7 +399,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -414,7 +414,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -438,7 +438,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -453,7 +453,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -468,7 +468,7 @@ function Home() {
                         </div>
                         <div class="popular-caption">
                           <h3>
-                            <a href="product_details.html">
+                            <a href="/#">
                               Bly Microfiber / Microsuede 56" Armless Loveseat
                             </a>
                           </h3>
@@ -498,7 +498,7 @@ function Home() {
               Suspendisse varius enim in eros elementum tristique. Duis cursus,
               mi quis viverra ornare, eros dolor interdum nulla.
             </p>
-            <a href="#" class="btn">
+            <a href="/#" class="btn">
               Discover More
             </a>
           </div>
@@ -532,7 +532,7 @@ function Home() {
                   </div>
                   <div class="popular-caption">
                     <h3>
-                      <a href="product_details.html">
+                      <a href="/#">
                         Bly Microfiber / Microsuede 56" Armless Loveseat
                       </a>
                     </h3>
@@ -551,7 +551,7 @@ function Home() {
                   </div>
                   <div class="popular-caption">
                     <h3>
-                      <a href="product_details.html">
+                      <a href="/#">
                         Bly Microfiber / Microsuede 56" Armless Loveseat
                       </a>
                     </h3>
@@ -570,7 +570,7 @@ function Home() {
                   </div>
                   <div class="popular-caption">
                     <h3>
-                      <a href="product_details.html">
+                      <a href="/#">
                         Bly Microfiber / Microsuede 56" Armless Loveseat
                       </a>
                     </h3>
@@ -581,7 +581,7 @@ function Home() {
             </div>
             <div class="row justify-content-center">
               <div class="room-btn">
-                <a href="product.html" class="border-btn">
+                <a href="/#" class="border-btn">
                   Discover More
                 </a>
               </div>
@@ -600,7 +600,7 @@ function Home() {
                       Suspendisse varius enim in eros elementum tristique. Duis
                       cursus, mi quis viverra ornare, eros dolor interdum nulla.
                     </p>
-                    <a href="product.html" class="border-btn">
+                    <a href="/#" class="border-btn">
                       Discover More
                     </a>
                   </div>
@@ -615,7 +615,7 @@ function Home() {
                         alt=""
                         class="w-100"
                       />
-                      <a href="#">
+                      <a href="/#">
                         <i class="ti-instagram"></i>
                       </a>
                     </div>
@@ -627,7 +627,7 @@ function Home() {
                         alt=""
                         class="w-100"
                       />
-                      <a href="#">
+                      <a href="/#">
                         <i class="ti-instagram"></i>
                       </a>
                     </div>
@@ -666,7 +666,7 @@ function Home() {
                   </div>
                   <div class="popular-caption">
                     <h3>
-                      <a href="product_details.html">
+                      <a href="/#">
                         Bly Microfiber / Microsuede 56" Armless Loveseat
                       </a>
                     </h3>
@@ -685,7 +685,7 @@ function Home() {
                   </div>
                   <div class="popular-caption">
                     <h3>
-                      <a href="product_details.html">
+                      <a href="/#">
                         Bly Microfiber / Microsuede 56" Armless Loveseat
                       </a>
                     </h3>
@@ -704,7 +704,7 @@ function Home() {
                   </div>
                   <div class="popular-caption">
                     <h3>
-                      <a href="product_details.html">
+                      <a href="/#">
                         Bly Microfiber / Microsuede 56" Armless Loveseat
                       </a>
                     </h3>
@@ -715,7 +715,7 @@ function Home() {
             </div>
             <div class="row justify-content-center">
               <div class="room-btn">
-                <a href="product.html" class="border-btn">
+                <a href="/#" class="border-btn">
                   Discover More
                 </a>
               </div>
@@ -791,7 +791,7 @@ function Home() {
       </main>
       <Footer />
       <div id="back-top">
-        <a title="Go to Top" href="#">
+        <a title="Go to Top" href="/#">
           {" "}
           <i class="fas fa-level-up-alt"></i>
         </a>

@@ -11,7 +11,7 @@ function Footer() {
                 <div class="single-footer-caption mb-50">
                   <div class="single-footer-caption mb-30">
                     <div class="footer-logo mb-35">
-                      <a href="index.html">
+                      <a href="/#">
                         <img src="assets/img/logo/logo2_footer.png" alt="" />
                       </a>
                     </div>
@@ -25,13 +25,13 @@ function Footer() {
                       </div>
                     </div>
                     <div class="footer-social">
-                      <a href="#">
+                      <a href="/#">
                         <i class="fab fa-twitter"></i>
                       </a>
-                      <a href="https://bit.ly/sai4ull">
+                      <a href="/#">
                         <i class="fab fa-facebook-f"></i>
                       </a>
-                      <a href="#">
+                      <a href="/#">
                         <i class="fab fa-pinterest-p"></i>
                       </a>
                     </div>
@@ -44,13 +44,13 @@ function Footer() {
                     <h4>Quick links</h4>
                     <ul>
                       <li>
-                        <a href="#">Image Licensin</a>
+                        <a href="/#">Image Licensin</a>
                       </li>
                       <li>
-                        <a href="#">Style Guide</a>
+                        <a href="/#">Style Guide</a>
                       </li>
                       <li>
-                        <a href="#">Privacy Policy</a>
+                        <a href="/#">Privacy Policy</a>
                       </li>
                     </ul>
                   </div>
@@ -62,13 +62,13 @@ function Footer() {
                     <h4>Shop Category</h4>
                     <ul>
                       <li>
-                        <a href="#">Image Licensin</a>
+                        <a href="/#">Image Licensin</a>
                       </li>
                       <li>
-                        <a href="#">Style Guide</a>
+                        <a href="/#">Style Guide</a>
                       </li>
                       <li>
-                        <a href="#">Privacy Policy</a>
+                        <a href="/#">Privacy Policy</a>
                       </li>
                     </ul>
                   </div>
@@ -80,13 +80,13 @@ function Footer() {
                     <h4>Pertners</h4>
                     <ul>
                       <li>
-                        <a href="#">Image Licensin</a>
+                        <a href="/#">Image Licensin</a>
                       </li>
                       <li>
-                        <a href="#">Style Guide</a>
+                        <a href="/#">Style Guide</a>
                       </li>
                       <li>
-                        <a href="#">Privacy Policy</a>
+                        <a href="/#">Privacy Policy</a>
                       </li>
                     </ul>
                   </div>
@@ -106,7 +106,7 @@ function Footer() {
                       <script>document.write(new Date().getFullYear());</script>
                       All rights reserved | This template is made with
                       <i class="fa fa-heart" aria-hidden="true"></i> by
-                      <a href="https://colorlib.com" target="_blank">
+                      <a href="/#" target="_blank">
                         Colorlib
                       </a>
                     </p>

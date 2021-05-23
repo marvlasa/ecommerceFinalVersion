@@ -1,4 +1,6 @@
 import React from "react";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
 function Login() {
   return (
@@ -13,123 +15,7 @@ function Login() {
           </div>
         </div>
       </div>
-      <header>
-        <div class="header-area">
-          <div class="main-header header-sticky">
-            <div class="container-fluid">
-              <div
-                class="
-                row
-                menu-wrapper
-                align-items-center
-                justify-content-between
-              "
-              >
-                <div class="header-left d-flex align-items-center">
-                  <div class="logo">
-                    <a href="index.html">
-                      <img src="assets/img/logo/logo.png" alt="" />
-                    </a>
-                  </div>
-                  <div class="logo2">
-                    <a href="index.html">
-                      <img src="assets/img/logo/logo2.png" alt="" />
-                    </a>
-                  </div>
-                  <div class="main-menu d-none d-lg-block">
-                    <nav>
-                      <ul id="navigation">
-                        <li>
-                          <a href="index.html">Home</a>
-                        </li>
-                        <li>
-                          <a href="product.html">Product</a>
-                        </li>
-                        <li>
-                          <a href="about.html">About</a>
-                        </li>
-                        <li>
-                          <a href="#">Page</a>
-                          <ul class="submenu">
-                            <li>
-                              <a href="login.html">Login</a>
-                            </li>
-                            <li>
-                              <a href="card.html">Card</a>
-                            </li>
-                            <li>
-                              <a href="categories.html">Categories</a>
-                            </li>
-                            <li>
-                              <a href="checkout.html">Checkout</a>
-                            </li>
-                            <li>
-                              <a href="product_details.html">Product Details</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a href="blog.html">Blog</a>
-                          <ul class="submenu">
-                            <li>
-                              <a href="blog.html">Blog</a>
-                            </li>
-                            <li>
-                              <a href="blog_details.html">Blog Details</a>
-                            </li>
-                            <li>
-                              <a href="elements.html">Elements</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a href="contact.html">Contact</a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-                <div class="header-right1 d-flex align-items-center">
-                  <div class="search">
-                    <ul class="d-flex align-items-center">
-                      <li>
-                        <form action="#" class="form-box f-right">
-                          <input
-                            type="text"
-                            name="Search"
-                            placeholder="Search products"
-                          />
-                          <div class="search-icon">
-                            <i class="ti-search"></i>
-                          </div>
-                        </form>
-                      </li>
-                      <li>
-                        <a
-                          href="login.html"
-                          class="account-btn"
-                          target="_blank"
-                        >
-                          My Account
-                        </a>
-                      </li>
-                      <li>
-                        <div class="card-stor">
-                          <img src="assets/img/icon/card.svg" alt="" />
-                          <span>0</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="mobile_menu d-block d-lg-none"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
       <main>
         <div class="slider-area">
           <div class="slider-active">
@@ -153,10 +39,10 @@ function Login() {
                       <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item">
-                            <a href="index.html">Home</a>
+                            <a href="/#">Home</a>
                           </li>
                           <li class="breadcrumb-item">
-                            <a href="#">Product details</a>
+                            <a href="/#">Product details</a>
                           </li>
                         </ol>
                       </nav>
@@ -183,6 +69,7 @@ function Login() {
                       <img
                         src="assets/img/gallery/product-details2.png"
                         class="w-100"
+                        alt=""
                       />
                     </div>
                     {/*                     <div data-thumb="assets/img/gallery/product-details3.png">
@@ -206,12 +93,12 @@ function Login() {
                   <h2>$149.99</h2>
                   <ul class="list">
                     <li>
-                      <a class="active" href="#">
+                      <a href="/#" class="active">
                         <span>Category</span> : Household
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/#">
                         {" "}
                         <span>Availibility</span> : In Stock
                       </a>
@@ -239,22 +126,22 @@ function Login() {
                       </span>
                     </div>
                     <div class="add_to_cart">
-                      <a href="#" class="btn">
+                      <a href="/#" class="btn">
                         add to cart
                       </a>
-                      <a href="#" class="like_us">
+                      <a href="/#" class="like_us">
                         {" "}
                         <i class="ti-heart"></i>{" "}
                       </a>
                     </div>
                     <div class="social_icon">
-                      <a href="#" class="fb">
+                      <a href="/#" class="fb">
                         <i class="ti-facebook"></i>
                       </a>
-                      <a href="#" class="tw">
+                      <a href="/#" class="tw">
                         <i class="ti-twitter-alt"></i>
                       </a>
-                      <a href="#" class="li">
+                      <a href="/#" class="li">
                         <i class="ti-linkedin"></i>
                       </a>
                     </div>
@@ -452,7 +339,7 @@ function Login() {
                           <div class="media-body">
                             <h4>Blake Ruiz</h4>
                             <h5>12th Feb, 2017 at 05:56 pm</h5>
-                            <a class="reply_btn" href="#">
+                            <a class="reply_btn" href="/#">
                               Reply
                             </a>
                           </div>
@@ -473,7 +360,7 @@ function Login() {
                           <div class="media-body">
                             <h4>Blake Ruiz</h4>
                             <h5>12th Feb, 2017 at 05:56 pm</h5>
-                            <a class="reply_btn" href="#">
+                            <a class="reply_btn" href="/#">
                               Reply
                             </a>
                           </div>
@@ -494,7 +381,7 @@ function Login() {
                           <div class="media-body">
                             <h4>Blake Ruiz</h4>
                             <h5>12th Feb, 2017 at 05:56 pm</h5>
-                            <a class="reply_btn" href="#">
+                            <a class="reply_btn" href="/#">
                               Reply
                             </a>
                           </div>
@@ -594,7 +481,7 @@ function Login() {
                           <h3>Based on 3 Reviews</h3>
                           <ul class="list">
                             <li>
-                              <a href="#">
+                              <a href="/#">
                                 5 Star
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -604,7 +491,7 @@ function Login() {
                               </a>
                             </li>
                             <li>
-                              <a href="#">
+                              <a href="/#">
                                 4 Star
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -614,7 +501,7 @@ function Login() {
                               </a>
                             </li>
                             <li>
-                              <a href="#">
+                              <a href="/#">
                                 3 Star
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -624,7 +511,7 @@ function Login() {
                               </a>
                             </li>
                             <li>
-                              <a href="#">
+                              <a href="/#">
                                 2 Star
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -634,7 +521,7 @@ function Login() {
                               </a>
                             </li>
                             <li>
-                              <a href="#">
+                              <a href="/#">
                                 1 Star
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -722,27 +609,27 @@ function Login() {
                       <p>Your Rating:</p>
                       <ul class="list">
                         <li>
-                          <a href="#">
+                          <a href="/#">
                             <i class="fa fa-star"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a href="/#">
                             <i class="fa fa-star"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a href="/#">
                             <i class="fa fa-star"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a href="/#">
                             <i class="fa fa-star"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a href="/#">
                             <i class="fa fa-star"></i>
                           </a>
                         </li>
@@ -874,126 +761,9 @@ function Login() {
           </div>
         </div>
       </main>
-      <footer>
-        <div class="footer-wrapper">
-          <div class="footer-area footer-padding">
-            <div class="container">
-              <div class="row justify-content-between">
-                <div class="col-xl-4 col-lg-3 col-md-8 col-sm-8">
-                  <div class="single-footer-caption mb-50">
-                    <div class="single-footer-caption mb-30">
-                      <div class="footer-logo mb-35">
-                        <a href="index.html">
-                          <img src="assets/img/logo/logo2_footer.png" alt="" />
-                        </a>
-                      </div>
-                      <div class="footer-tittle">
-                        <div class="footer-pera">
-                          <p>
-                            Suspendisse varius enim in eros elementum tristique.
-                            Duis cursus, mi quis viverra ornare, eros dolor
-                            interdum nulla.
-                          </p>
-                        </div>
-                      </div>
-                      <div class="footer-social">
-                        <a href="#">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://bit.ly/sai4ull">
-                          <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#">
-                          <i class="fab fa-pinterest-p"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
-                  <div class="single-footer-caption mb-50">
-                    <div class="footer-tittle">
-                      <h4>Quick links</h4>
-                      <ul>
-                        <li>
-                          <a href="#">Image Licensin</a>
-                        </li>
-                        <li>
-                          <a href="#">Style Guide</a>
-                        </li>
-                        <li>
-                          <a href="#">Privacy Policy</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
-                  <div class="single-footer-caption mb-50">
-                    <div class="footer-tittle">
-                      <h4>Shop Category</h4>
-                      <ul>
-                        <li>
-                          <a href="#">Image Licensin</a>
-                        </li>
-                        <li>
-                          <a href="#">Style Guide</a>
-                        </li>
-                        <li>
-                          <a href="#">Privacy Policy</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
-                  <div class="single-footer-caption mb-50">
-                    <div class="footer-tittle">
-                      <h4>Pertners</h4>
-                      <ul>
-                        <li>
-                          <a href="#">Image Licensin</a>
-                        </li>
-                        <li>
-                          <a href="#">Style Guide</a>
-                        </li>
-                        <li>
-                          <a href="#">Privacy Policy</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="footer-bottom-area">
-            <div class="container">
-              <div class="footer-border">
-                <div class="row d-flex align-items-center">
-                  <div class="col-xl-12">
-                    <div class="footer-copy-right text-center">
-                      <p>
-                        Copyright &copy;
-                        <script>
-                          document.write(new Date().getFullYear());
-                        </script>
-                        All rights reserved | This template is made with
-                        <i class="fa fa-heart" aria-hidden="true"></i> by
-                        <a href="https://colorlib.com" target="_blank">
-                          Colorlib
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
       <div id="back-top">
-        <a title="Go to Top" href="#">
+        <a title="Go to Top" href="/#">
           {" "}
           <i class="fas fa-level-up-alt"></i>
         </a>

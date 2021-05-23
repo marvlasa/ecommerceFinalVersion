@@ -44,7 +44,7 @@ function Register() {
                   <div class="register-footer">
                     <p>
                       Already have an account?
-                      <a href="login.html"> Login</a> here
+                      <a href="/#"> Login</a> here
                     </p>
                     <button class="submit-btn3">Sign Up</button>
                   </div>

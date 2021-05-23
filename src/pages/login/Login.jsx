@@ -39,7 +39,7 @@ function Login() {
                     <div class="single-input-fields login-check">
                       <input type="checkbox" id="fruit1" name="keep-log" />
                       <label for="fruit1">Keep me logged in</label>
-                      <a href="#" class="f-right">
+                      <a href="/#" class="f-right">
                         Forgot Password?
                       </a>
                     </div>

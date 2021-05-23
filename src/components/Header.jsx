@@ -16,12 +16,12 @@ function Header() {
             >
               <div class="header-left d-flex align-items-center">
                 <div class="logo">
-                  <a href="index.html">
+                  <a href="/#">
                     <img src="assets/img/logo/logo.png" alt="" />
                   </a>
                 </div>
                 <div class="logo2">
-                  <a href="index.html">
+                  <a href="/#">
                     <img src="assets/img/logo/logo2.png" alt="" />
                   </a>
                 </div>
@@ -29,50 +29,50 @@ function Header() {
                   <nav>
                     <ul id="navigation">
                       <li>
-                        <a href="index.html">Home</a>
+                        <a href="/#">Home</a>
                       </li>
                       <li>
-                        <a href="product.html">Product</a>
+                        <a href="/#">Product</a>
                       </li>
                       <li>
-                        <a href="about.html">About</a>
+                        <a href="/#">About</a>
                       </li>
                       <li>
-                        <a href="#">Page</a>
+                        <a href="/#">Page</a>
                         <ul class="submenu">
                           <li>
-                            <a href="login.html">Login</a>
+                            <a href="/#">Login</a>
                           </li>
                           <li>
-                            <a href="card.html">Card</a>
+                            <a href="/#">Card</a>
                           </li>
                           <li>
-                            <a href="categories.html">Categories</a>
+                            <a href="/#">Categories</a>
                           </li>
                           <li>
-                            <a href="checkout.html">Checkout</a>
+                            <a href="/#">Checkout</a>
                           </li>
                           <li>
-                            <a href="product_details.html">Product Details</a>
+                            <a href="/#">Product Details</a>
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <a href="blog.html">Blog</a>
+                        <a href="/#">Blog</a>
                         <ul class="submenu">
                           <li>
-                            <a href="blog.html">Blog</a>
+                            <a href="/#">Blog</a>
                           </li>
                           <li>
-                            <a href="blog_details.html">Blog Details</a>
+                            <a href="/#">Blog Details</a>
                           </li>
                           <li>
-                            <a href="elements.html">Elements</a>
+                            <a href="/#">Elements</a>
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="/#">Contact</a>
                       </li>
                     </ul>
                   </nav>
@@ -94,7 +94,7 @@ function Header() {
                       </form>
                     </li>
                     <li>
-                      <a href="login.html" class="account-btn" target="_blank">
+                      <a href="/#" class="account-btn" target="_blank">
                         My Account
                       </a>
                     </li>
