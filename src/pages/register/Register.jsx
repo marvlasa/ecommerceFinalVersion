@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState("");
@@ -11,6 +12,7 @@ function Register() {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  let history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +26,10 @@ function Register() {
         email,
         password,
       });
-      console.log(response);
+      console.log(response.data.user);
+      dispatch({ type: "USER", payload: response.data.user });
+      dispatch({ type: "TOKEN", payload: response.data.user });
+      history.push("/");
     } catch (err) {
       console.log(err);
     }
