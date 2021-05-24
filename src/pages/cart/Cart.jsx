@@ -57,7 +57,7 @@ function Cart() {
 
                   <tr class="bottom_button">
                     <td>
-                      <a class="btn" href="#">
+                      <a class="btn" href="/#">
                         Update Cart
                       </a>
                     </td>
@@ -65,7 +65,7 @@ function Cart() {
                     <td></td>
                     <td>
                       <div class="cupon_text float-right">
-                        <a class="btn" href="#">
+                        <a class="btn" href="/#">
                           Close Coupon
                         </a>
                       </div>
@@ -88,7 +88,7 @@ function Cart() {
                 <Link to="/products" className="btn">
                   Continue Shopping
                 </Link>
-                <a class="btn checkout_btn" href="#">
+                <a class="btn checkout_btn" href="/#">
                   Proceed to checkout
                 </a>
               </div>

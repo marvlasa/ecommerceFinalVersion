@@ -93,7 +93,7 @@ function Header() {
                 <div class="mobile_menu d-block d-lg-none">
                   <div class="slicknav_menu">
                     <a
-                      href="#"
+                      href="/#"
                       aria-haspopup="true"
                       role="button"
                       tabindex="0"
