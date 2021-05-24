@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../../components/Footer";
 import { useEffect } from "react";
 
-function Login() {
+function ProductDetail() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -51,12 +51,6 @@ function Login() {
               <div class="col-lg-5">
                 <div class="product_slider_img">
                   <div id="vertical">
-                    {/*                     <div data-thumb="assets/img/gallery/product-details1.png">
-                      <img
-                        src="assets/img/gallery/product-details1.png"
-                        class="w-100"
-                      />
-                    </div> */}
                     <div data-thumb="assets/img/gallery/product-details2.png">
                       <img
                         src="assets/img/gallery/product-details2.png"
@@ -64,18 +58,6 @@ function Login() {
                         alt=""
                       />
                     </div>
-                    {/*                     <div data-thumb="assets/img/gallery/product-details3.png">
-                      <img
-                        src="assets/img/gallery/product-details3.png"
-                        class="w-100"
-                      />
-                    </div>
-                    <div data-thumb="assets/img/gallery/product-details4.png">
-                      <img
-                        src="assets/img/gallery/product-details4.png"
-                        class="w-100"
-                      />
-                    </div> */}
                   </div>
                 </div>
               </div>
@@ -764,4 +746,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ProductDetail;
