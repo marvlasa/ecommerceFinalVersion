@@ -1,8 +1,21 @@
 import React from "react";
 import Footer from "../../components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import axios from "axios";
 
 function ProductDetail() {
+  const [product, setProduct] = useState({});
+  const { slug } = useParams();
+  useEffect(() => {
+    const getProduct = async () => {
+      const response = await axios.get(`http://localhost:3079/product/${slug}`);
+      console.log(response.data);
+      setProduct(response.data);
+    };
+    getProduct();
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -52,37 +65,30 @@ function ProductDetail() {
                 <div class="product_slider_img">
                   <div id="vertical">
                     <div data-thumb="assets/img/gallery/product-details2.png">
-                      <img
-                        src="assets/img/gallery/product-details2.png"
-                        class="w-100"
-                        alt=""
-                      />
+                      <img src={product.image} class="w-100" alt="" />
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
-                  <h3>Faded SkyBlu Denim Jeans</h3>
-                  <h2>$149.99</h2>
+                  <h3>{product.name}</h3>
+                  <h2>${product.price}</h2>
                   <ul class="list">
                     <li>
                       <a href="/#" class="active">
-                        <span>Category</span> : Household
+                        <span>Category</span> : {product.categoryId}
                       </a>
                     </li>
                     <li>
                       <a href="/#">
                         {" "}
-                        <span>Availibility</span> : In Stock
+                        <span>Availibility</span> :{" "}
+                        {product.stock > 0 ? "In Stock" : "No Stock"}
                       </a>
                     </li>
                   </ul>
-                  <p>
-                    Mill Oil is an innovative oil filled radiator with the most
-                    modern technology. If you are looking for something that can
-                    make your interior look awesome, and at the same time.
-                  </p>
+                  <p>{product.description}</p>
                   <div class="card_area">
                     <div class="product_count d-inline-block">
                       <span class="inumber-decrement">
@@ -668,72 +674,6 @@ function ProductDetail() {
             </div>
           </div>
         </section>
-        <div class="categories-area section-padding40 gray-bg">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div
-                  class="single-cat mb-50 wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay=".2s"
-                >
-                  <div class="cat-icon">
-                    <img src="assets/img/icon/services1.svg" alt="" />
-                  </div>
-                  <div class="cat-cap">
-                    <h5>Fast & Free Delivery</h5>
-                    <p>Free delivery on all orders</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div
-                  class="single-cat mb-50 wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay=".2s"
-                >
-                  <div class="cat-icon">
-                    <img src="assets/img/icon/services2.svg" alt="" />
-                  </div>
-                  <div class="cat-cap">
-                    <h5>Secure Payment</h5>
-                    <p>Free delivery on all orders</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div
-                  class="single-cat mb-50 wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay=".4s"
-                >
-                  <div class="cat-icon">
-                    <img src="assets/img/icon/services3.svg" alt="" />
-                  </div>
-                  <div class="cat-cap">
-                    <h5>Money Back Guarantee</h5>
-                    <p>Free delivery on all orders</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div
-                  class="single-cat mb-50 wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay=".5s"
-                >
-                  <div class="cat-icon">
-                    <img src="assets/img/icon/services4.svg" alt="" />
-                  </div>
-                  <div class="cat-cap">
-                    <h5>Online Support</h5>
-                    <p>Free delivery on all orders</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </main>
       <Footer />
       <div id="back-top">
