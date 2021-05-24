@@ -13,8 +13,8 @@ function Products({ handleCartItems }) {
     const products = async () => {
       try {
         const response = await axios.get(URL);
-
-        setProducts(response.data.products);
+        console.log(response.data);
+        setProducts(response.data);
       } catch (err) {
         console.log(err);
       }

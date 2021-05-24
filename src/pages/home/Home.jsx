@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import { useEffect } from "react";
 import Products from "../products/Products";
 
-function Home({ handleCartItems }) {
+function Home({ handleCartItems, searchField }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -144,7 +144,10 @@ function Home({ handleCartItems }) {
             </div>
           </div>
           <div class="row">
-            <Products handleCartItems={handleCartItems} />
+            {/* <Products
+              handleCartItems={handleCartItems}
+              searchField={searchField}
+            /> */}
             {/* <div class="tab-content" id="nav-tabContent">
                 <div
                   class="tab-pane fade show active"

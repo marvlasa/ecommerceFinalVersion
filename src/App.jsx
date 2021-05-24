@@ -12,6 +12,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 
 function App() {
+  const [searchField, setSearchField] = useState("");
   const [cartItems, setCartItems] = useState([]);
   const handleCartItems = (item) => {
     setCartItems((cartItems) => [...cartItems, item]);
@@ -19,16 +20,29 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header cartItems={cartItems} />
+        <Header cartItems={cartItems} setSearchField={setSearchField} />
 
         <Switch>
           <Route
             exact
             path="/"
-            render={(props) => <Home handleCartItems={handleCartItems} />}
+            render={() => (
+              <Home
+                handleCartItems={handleCartItems}
+                searchField={searchField}
+              />
+            )}
           />
           <Route path="/about" component={AboutUs} />
-          <Route path="/products" component={Products} />
+          <Route
+            path="/products"
+            render={() => (
+              <Products
+                handleCartItems={handleCartItems}
+                searchField={searchField}
+              />
+            )}
+          />
           <Route path="/product-detail" component={ProductDetail} />
           <Route path="/contact" component={Contact} />
           <Route path="/login" component={Login} />

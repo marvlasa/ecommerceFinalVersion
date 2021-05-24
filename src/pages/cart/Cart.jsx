@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 
-function Cart() {
+function Cart({ cartItems }) {
   return (
     <div>
       <section class="cart_area section-padding40">
@@ -47,6 +47,7 @@ function Cart() {
                         />
                         <span class="input-number-increment">
                           <i class="ti-plus"></i>
+                          {cartItems.length}
                         </span>
                       </div>
                     </td>
