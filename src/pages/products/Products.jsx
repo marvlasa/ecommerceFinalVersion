@@ -1,11 +1,32 @@
 import React from "react";
 import Footer from "../../components/Footer";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-function Login() {
+function Products({ handleCartItems }) {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const URL = "http://localhost:3079/products";
+
+    const products = async () => {
+      try {
+        const response = await axios.get(URL);
+
+        setProducts(response.data.products);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    products();
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div>
       <main>
@@ -117,187 +138,238 @@ function Login() {
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="tab-content" id="nav-tabContent">
-                <div
-                  class="tab-pane fade show active"
-                  id="nav-Sofa"
-                  role="tabpanel"
-                  aria-labelledby="nav-Sofa-tab"
-                ></div>
+            {products.map((item) => {
+              return (
+                <div class="row">
+                  <Link to={"/product/" + item.slug}>
+                    <img src={item.image} />
+                    <div className="heightCard">
+                      <h5>{item.name}</h5>
+                      {/* <p>{item.description.substring(0, 50)}</p> */}
+                    </div>
+                  </Link>
+                  <p>{item.price}</p>
+                  <div class="row justify-content-center">
+                    <div class="room-btn">
+                      <button
+                        onClick={() => handleCartItems(item)}
+                        className="border-btn"
+                      >
+                        Discover More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            {/* <div class="tab-content" id="nav-tabContent">
+                      <div
+                        class="tab-pane fade show active"
+                        id="nav-Sofa"
+                        role="tabpanel"
+                        aria-labelledby="nav-Sofa-tab"
+                      ></div>
 
-                <div
-                  class="tab-pane fade"
-                  id="nav-Table"
-                  role="tabpanel"
-                  aria-labelledby="nav-Table-tab"
-                >
-                  <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="single-new-arrival mb-50 text-center">
-                        <div class="popular-img">
-                          <img src="assets/img/gallery/popular1.png" alt="" />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <a href="/#">
-                              Bly Microfiber / Microsuede 56" Armless Loveseat
-                            </a>
-                          </h3>
-                          <span>$367</span>
-                        </div>
-                      </div>
-                    </div>
+                      <div
+                        class="tab-pane fade"
+                        id="nav-Table"
+                        role="tabpanel"
+                        aria-labelledby="nav-Table-tab"
+                      >
+                        <div class="row">
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                              <div class="popular-img">
+                                <img
+                                  src="assets/img/gallery/popular1.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="popular-caption">
+                                <h3>
+                                  <a href="/#">
+                                    Bly Microfiber / Microsuede 56" Armless
+                                    Loveseat
+                                  </a>
+                                </h3>
+                                <span>$367</span>
+                              </div>
+                            </div>
+                          </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="single-new-arrival mb-50 text-center">
-                        <div class="popular-img">
-                          <img src="assets/img/gallery/popular8.png" alt="" />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <a href="/#">
-                              Bly Microfiber / Microsuede 56" Armless Loveseat
-                            </a>
-                          </h3>
-                          <span>$367</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="single-new-arrival mb-50 text-center">
-                        <div class="popular-img">
-                          <img src="assets/img/gallery/popular9.png" alt="" />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <a href="/#">
-                              Bly Microfiber / Microsuede 56" Armless Loveseat
-                            </a>
-                          </h3>
-                          <span>$367</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="nav-Chair"
-                  role="tabpanel"
-                  aria-labelledby="nav-Chair-tab"
-                >
-                  <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="single-new-arrival mb-50 text-center">
-                        <div class="popular-img">
-                          <img src="assets/img/gallery/popular7.png" alt="" />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <a href="/#">
-                              Bly Microfiber / Microsuede 56" Armless Loveseat
-                            </a>
-                          </h3>
-                          <span>$367</span>
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                              <div class="popular-img">
+                                <img
+                                  src="assets/img/gallery/popular8.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="popular-caption">
+                                <h3>
+                                  <a href="/#">
+                                    Bly Microfiber / Microsuede 56" Armless
+                                    Loveseat
+                                  </a>
+                                </h3>
+                                <span>$367</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                              <div class="popular-img">
+                                <img
+                                  src="assets/img/gallery/popular9.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="popular-caption">
+                                <h3>
+                                  <a href="/#">
+                                    Bly Microfiber / Microsuede 56" Armless
+                                    Loveseat
+                                  </a>
+                                </h3>
+                                <span>$367</span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="single-new-arrival mb-50 text-center">
-                        <div class="popular-img">
-                          <img src="assets/img/gallery/popular8.png" alt="" />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <a href="/#">
-                              Bly Microfiber / Microsuede 56" Armless Loveseat
-                            </a>
-                          </h3>
-                          <span>$367</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="single-new-arrival mb-50 text-center">
-                        <div class="popular-img">
-                          <img src="assets/img/gallery/popular9.png" alt="" />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <a href="/#">
-                              Bly Microfiber / Microsuede 56" Armless Loveseat
-                            </a>
-                          </h3>
-                          <span>$367</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="nav-Bed"
-                  role="tabpanel"
-                  aria-labelledby="nav-Bed-tab"
-                >
-                  <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="single-new-arrival mb-50 text-center">
-                        <div class="popular-img">
-                          <img src="assets/img/gallery/popular3.png" alt="" />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <a href="/#">
-                              Bly Microfiber / Microsuede 56" Armless Loveseat
-                            </a>
-                          </h3>
-                          <span>$367</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="single-new-arrival mb-50 text-center">
-                        <div class="popular-img">
-                          <img src="assets/img/gallery/popular4.png" alt="" />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <a href="/#">
-                              Bly Microfiber / Microsuede 56" Armless Loveseat
-                            </a>
-                          </h3>
-                          <span>$367</span>
+                      <div
+                        class="tab-pane fade"
+                        id="nav-Chair"
+                        role="tabpanel"
+                        aria-labelledby="nav-Chair-tab"
+                      >
+                        <div class="row">
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                              <div class="popular-img">
+                                <img
+                                  src="assets/img/gallery/popular7.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="popular-caption">
+                                <h3>
+                                  <a href="/#">
+                                    Bly Microfiber / Microsuede 56" Armless
+                                    Loveseat
+                                  </a>
+                                </h3>
+                                <span>$367</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                              <div class="popular-img">
+                                <img
+                                  src="assets/img/gallery/popular8.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="popular-caption">
+                                <h3>
+                                  <a href="/#">
+                                    Bly Microfiber / Microsuede 56" Armless
+                                    Loveseat
+                                  </a>
+                                </h3>
+                                <span>$367</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                              <div class="popular-img">
+                                <img
+                                  src="assets/img/gallery/popular9.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="popular-caption">
+                                <h3>
+                                  <a href="/#">
+                                    Bly Microfiber / Microsuede 56" Armless
+                                    Loveseat
+                                  </a>
+                                </h3>
+                                <span>$367</span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="single-new-arrival mb-50 text-center">
-                        <div class="popular-img">
-                          <img src="assets/img/gallery/popular5.png" alt="" />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <a href="/#">
-                              Bly Microfiber / Microsuede 56" Armless Loveseat
-                            </a>
-                          </h3>
-                          <span>$367</span>
+                      <div
+                        class="tab-pane fade"
+                        id="nav-Bed"
+                        role="tabpanel"
+                        aria-labelledby="nav-Bed-tab"
+                      >
+                        <div class="row">
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                              <div class="popular-img">
+                                <img
+                                  src="assets/img/gallery/popular3.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="popular-caption">
+                                <h3>
+                                  <a href="/#">
+                                    Bly Microfiber / Microsuede 56" Armless
+                                    Loveseat
+                                  </a>
+                                </h3>
+                                <span>$367</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                              <div class="popular-img">
+                                <img
+                                  src="assets/img/gallery/popular4.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="popular-caption">
+                                <h3>
+                                  <a href="/#">
+                                    Bly Microfiber / Microsuede 56" Armless
+                                    Loveseat
+                                  </a>
+                                </h3>
+                                <span>$367</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                              <div class="popular-img">
+                                <img
+                                  src="assets/img/gallery/popular5.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="popular-caption">
+                                <h3>
+                                  <a href="/#">
+                                    Bly Microfiber / Microsuede 56" Armless
+                                    Loveseat
+                                  </a>
+                                </h3>
+                                <span>$367</span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row justify-content-center">
-              <div class="room-btn">
-                <a href="product.html" class="border-btn">
-                  Discover More
-                </a>
-              </div>
-            </div>
+                    </div> */}
           </div>
         </section>
       </main>
@@ -312,4 +384,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Products;
