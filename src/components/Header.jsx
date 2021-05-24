@@ -49,9 +49,13 @@ function Header() {
                       <li>
                         <Link to="/about">About</Link>
                       </li>
-
                       <li>
                         <Link to="/contact">Contact</Link>
+                      </li>
+                      <li>
+                        <Link to="/logout" className="text-danger">
+                          Logout
+                        </Link>
                       </li>
                     </ul>
                   </nav>
@@ -142,6 +146,11 @@ function Header() {
                       <li>
                         <Link to="/cart" role="menuitem" tabIndex="-1">
                           Cart
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/logout" role="menuitem" tabIndex="-1">
+                          Logout
                         </Link>
                       </li>
                     </ul>
