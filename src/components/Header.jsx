@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-function Header({ cartItems }) {
+function Header() {
+  const cart = useSelector((state) => state.cart);
+  let cartQuantity = 0;
+  cart.forEach((item, index) => {
+    cartQuantity = cartQuantity + item.quantity;
+    //total += item.price;
+  });
   const [headerMenu, setHeaderMenu] = useState("none");
   const handleClick = () => {
     if (headerMenu === "none") {
@@ -85,7 +92,7 @@ function Header({ cartItems }) {
                       <Link to="/cart">
                         <div class="card-stor">
                           <img src="assets/img/icon/card.svg" alt="" />
-                          <span>{cartItems.length}</span>
+                          <span>{cartQuantity}</span>
                         </div>
                       </Link>
                     </li>

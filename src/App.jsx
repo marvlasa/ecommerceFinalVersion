@@ -14,29 +14,28 @@ import { useState } from "react";
 
 function App() {
   const [searchField, setSearchField] = useState("");
-  const [cartItems, setCartItems] = useState([]);
-  const handleCartItems = (item) => {
-    setCartItems((cartItems) => [...cartItems, item]);
-  };
+  // const [cartItems, setCartItems] = useState([]);
+
+  // const handleCartItems = (item) => {
+  //   setCartItems((cartItems) => [...cartItems, item]);
+  // };
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Header cartItems={cartItems} setSearchField={setSearchField} />
+        <Header setSearchField={setSearchField} />
 
         <Switch>
           <Route exact path="/" render={() => <Home />} />
           <Route path="/about" component={AboutUs} />
           <Route path="/products" render={() => <Products />} />
 
-          <Route
-            path="/product/:slug"
-            render={() => <ProductDetail handleCartItems={handleCartItems} />}
-          />
+          <Route path="/product/:slug" render={() => <ProductDetail />} />
           <Route path="/contact" component={Contact} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/logout" component={Logout} />
-          <Route path="/cart" render={() => <Cart cartItems={cartItems} />} />
+          <Route path="/cart" render={() => <Cart />} />
         </Switch>
       </BrowserRouter>
     </div>

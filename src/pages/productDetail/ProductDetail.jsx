@@ -2,11 +2,14 @@ import React from "react";
 import Footer from "../../components/Footer";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
-function ProductDetail({ handleCartItems }) {
+function ProductDetail() {
   const [product, setProduct] = useState({});
   const { slug } = useParams();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const getProduct = async () => {
       const response = await axios.get(`http://localhost:3079/product/${slug}`);
@@ -107,7 +110,10 @@ function ProductDetail({ handleCartItems }) {
                     </div>
                     <div class="add_to_cart">
                       <button
-                        onClick={() => handleCartItems(product)}
+                        // onClick={() => addItemToCart(product)}
+                        onClick={() =>
+                          dispatch({ type: "CART_ADD_ITEM", payload: product })
+                        }
                         class="btn"
                       >
                         add to cart

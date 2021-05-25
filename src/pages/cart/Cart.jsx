@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
+import { useSelector } from "react-redux";
 
-function Cart({ cartItems }) {
+function Cart() {
+  const cart = useSelector((state) => state.cart);
   let total = 0;
-  cartItems.forEach((item, index) => {
-    total = total + item.price;
+  cart.forEach((item, index) => {
+    total = total + item.price * item.quantity;
     //total += item.price;
   });
   return (
@@ -24,7 +26,7 @@ function Cart({ cartItems }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {cartItems.map((product) => {
+                  {cart.map((product) => {
                     return (
                       <tr>
                         <td>
@@ -48,7 +50,7 @@ function Cart({ cartItems }) {
                             <input
                               class="input-number"
                               type="text"
-                              value="1"
+                              value={product.quantity}
                               min="0"
                               max="10"
                             />
@@ -58,7 +60,7 @@ function Cart({ cartItems }) {
                           </div>
                         </td>
                         <td>
-                          <h5>${product.price}</h5>
+                          <h5>${product.price * product.quantity}</h5>
                         </td>
                       </tr>
                     );
