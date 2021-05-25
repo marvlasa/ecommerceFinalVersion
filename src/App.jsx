@@ -9,19 +9,43 @@ import Register from "./pages/register/Register";
 import Logout from "./pages/logout/Logout";
 import Account from "./pages/account/Account";
 import Cart from "./pages/cart/Cart";
-
 import Header from "./components/Header";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+  const [searchField, setSearchField] = useState("");
+  const [cartItems, setCartItems] = useState([]);
+  const handleCartItems = (item) => {
+    setCartItems((cartItems) => [...cartItems, item]);
+  };
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        <Header cartItems={cartItems} setSearchField={setSearchField} />
+
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Home
+                handleCartItems={handleCartItems}
+                searchField={searchField}
+              />
+            )}
+          />
           <Route path="/about" component={AboutUs} />
-          <Route path="/products" component={Products} />
+          <Route
+            path="/products"
+            render={() => (
+              <Products
+                handleCartItems={handleCartItems}
+                searchField={searchField}
+              />
+            )}
+          />
+
           <Route path="/product-detail/:slug" component={ProductDetail} />
           <Route path="/contact" component={Contact} />
           <Route path="/login" component={Login} />

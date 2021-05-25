@@ -1,18 +1,18 @@
 import React from "react";
 import Footer from "../../components/Footer";
 import { useEffect } from "react";
+import Products from "../products/Products";
 
-function Home() {
+function Home({ handleCartItems, searchField }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <div class="full-wrapper">
-      <main>
-        <div class="slider-area">
-          <div class="slider-active">
-            <div
-              class="
+      <div class="slider-area">
+        <div class="slider-active">
+          <div
+            class="
                 single-slider
                 hero-overly1
                 slider-height
@@ -20,29 +20,27 @@ function Home() {
                 align-items-center
                 slider-bg1
               "
-            >
-              <div class="container">
-                <div class="row">
-                  <div class="col-xl-6 col-lg-8 col-md-8">
-                    <div class="hero__caption">
-                      <span>70% Sale off </span>
-                      <h1 data-animation="fadeInUp" data-delay=".4s">
-                        Furniture at Cost
-                      </h1>
-                      <p data-animation="fadeInUp" data-delay=".6s">
-                        Suspendisse varius enim in eros elementum tristique.
-                        Duis cursus, mi quis viverra ornare, eros dolor interdum
-                        nulla.
-                      </p>
-                      <div
-                        class="hero__btn"
-                        data-animation="fadeInUp"
-                        data-delay=".7s"
-                      >
-                        <a href="/#" class="btn hero-btn">
-                          Discover More
-                        </a>
-                      </div>
+          >
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-6 col-lg-8 col-md-8">
+                  <div class="hero__caption">
+                    <span>70% Sale off </span>
+                    <h1 data-animation="fadeInUp" data-delay=".4s">
+                      Furniture at Cost
+                    </h1>
+                    <p data-animation="fadeInUp" data-delay=".6s">
+                      Suspendisse varius enim in eros elementum tristique. Duis
+                      cursus, mi quis viverra ornare, eros dolor interdum nulla.
+                    </p>
+                    <div
+                      class="hero__btn"
+                      data-animation="fadeInUp"
+                      data-delay=".7s"
+                    >
+                      <a href="/#" class="btn hero-btn">
+                        Discover More
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -50,102 +48,107 @@ function Home() {
             </div>
           </div>
         </div>
-        <section class="properties new-arrival fix">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-xl-7 col-lg-8 col-md-10">
-                <div
-                  class="section-tittle mb-60 text-center wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay=".2s"
-                >
-                  <h2>Popular products</h2>
-                  <p>
-                    Suspendisse varius enim in eros elementum tristique. Duis
-                    cursus, mi quis viverra ornare, eros dolor interdum nulla.
-                  </p>
-                </div>
+      </div>
+      <div class="properties new-arrival fix">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-10">
+              <div
+                class="section-tittle mb-60 text-center wow fadeInUp"
+                data-wow-duration="1s"
+                data-wow-delay=".2s"
+              >
+                <h2>Popular products</h2>
+                <p>
+                  Suspendisse varius enim in eros elementum tristique. Duis
+                  cursus, mi quis viverra ornare, eros dolor interdum nulla.
+                </p>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xl-12">
-                <div class="properties__button text-center">
-                  <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <a
-                        class="nav-item nav-link active"
-                        id="nav-Sofa-tab"
-                        data-toggle="tab"
-                        href="#nav-Sofa"
-                        role="tab"
-                        aria-controls="nav-Sofa"
-                        aria-selected="true"
-                      >
-                        Sofa
-                      </a>
-                      <a
-                        class="nav-item nav-link"
-                        id="nav-Table-tab"
-                        data-toggle="tab"
-                        href="#nav-Table"
-                        role="tab"
-                        aria-controls="nav-Table"
-                        aria-selected="false"
-                      >
-                        Table
-                      </a>
-                      <a
-                        class="nav-item nav-link"
-                        id="nav-Chair-tab"
-                        data-toggle="tab"
-                        href="#nav-Chair"
-                        role="tab"
-                        aria-controls="nav-Chair"
-                        aria-selected="false"
-                      >
-                        Chair
-                      </a>
+          </div>
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="properties__button text-center">
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a
+                      class="nav-item nav-link active"
+                      id="nav-Sofa-tab"
+                      data-toggle="tab"
+                      href="#nav-Sofa"
+                      role="tab"
+                      aria-controls="nav-Sofa"
+                      aria-selected="true"
+                    >
+                      Sofa
+                    </a>
+                    <a
+                      class="nav-item nav-link"
+                      id="nav-Table-tab"
+                      data-toggle="tab"
+                      href="#nav-Table"
+                      role="tab"
+                      aria-controls="nav-Table"
+                      aria-selected="false"
+                    >
+                      Table
+                    </a>
+                    <a
+                      class="nav-item nav-link"
+                      id="nav-Chair-tab"
+                      data-toggle="tab"
+                      href="#nav-Chair"
+                      role="tab"
+                      aria-controls="nav-Chair"
+                      aria-selected="false"
+                    >
+                      Chair
+                    </a>
 
-                      <a
-                        class="nav-item nav-link"
-                        id="nav-Bed-tab"
-                        data-toggle="tab"
-                        href="#nav-Bed"
-                        role="tab"
-                        aria-controls="nav-Bed"
-                        aria-selected="false"
-                      >
-                        Bed
-                      </a>
-                      <a
-                        class="nav-item nav-link"
-                        id="nav-Lightning-tab"
-                        data-toggle="tab"
-                        href="#nav-Lightning"
-                        role="tab"
-                        aria-controls="nav-Lightning"
-                        aria-selected="false"
-                      >
-                        Lightning
-                      </a>
-                      <a
-                        class="nav-item nav-link"
-                        id="nav-Decore-tab"
-                        data-toggle="tab"
-                        href="#nav-Decore"
-                        role="tab"
-                        aria-controls="nav-Decore"
-                        aria-selected="false"
-                      >
-                        Decore
-                      </a>
-                    </div>
-                  </nav>
-                </div>
+                    <a
+                      class="nav-item nav-link"
+                      id="nav-Bed-tab"
+                      data-toggle="tab"
+                      href="#nav-Bed"
+                      role="tab"
+                      aria-controls="nav-Bed"
+                      aria-selected="false"
+                    >
+                      Bed
+                    </a>
+                    <a
+                      class="nav-item nav-link"
+                      id="nav-Lightning-tab"
+                      data-toggle="tab"
+                      href="#nav-Lightning"
+                      role="tab"
+                      aria-controls="nav-Lightning"
+                      aria-selected="false"
+                    >
+                      Lightning
+                    </a>
+                    <a
+                      class="nav-item nav-link"
+                      id="nav-Decore-tab"
+                      data-toggle="tab"
+                      href="#nav-Decore"
+                      role="tab"
+                      aria-controls="nav-Decore"
+                      aria-selected="false"
+                    >
+                      Decore
+                    </a>
+                  </div>
+                </nav>
               </div>
             </div>
-            <div class="row">
-              <div class="tab-content" id="nav-tabContent">
+          </div>
+          <div class="row">
+            {/* <Products
+              handleCartItems={handleCartItems}
+              searchField={searchField}
+            /> */}
+            {/* <div class="tab-content" id="nav-tabContent">
                 <div
                   class="tab-pane fade show active"
                   id="nav-Sofa"
@@ -471,9 +474,9 @@ function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
-        </section>
+        </div>
         <div class="visit-tailor-area fix">
           <div class="tailor-offers"></div>
           <div class="tailor-details">
@@ -580,7 +583,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
       <Footer />
       <div id="back-top">
         <a title="Go to Top" href="/#">
