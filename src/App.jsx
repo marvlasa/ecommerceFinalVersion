@@ -45,7 +45,7 @@ function App() {
             )}
           />
 
-          <Route path="/product-detail/:slug" component={ProductDetail} />
+          <Route path="/product/:slug" component={ProductDetail} />
           <Route path="/contact" component={Contact} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />

@@ -141,22 +141,18 @@ function Products({ handleCartItems }) {
             {products.map((item) => {
               return (
                 <div class="row">
-                  <Link to={"/product/" + item.slug}>
-                    <img src={item.image} />
-                    <div className="heightCard">
-                      <h5>{item.name}</h5>
-                      {/* <p>{item.description.substring(0, 50)}</p> */}
-                    </div>
-                  </Link>
+                  <img src={item.image} />
+                  <div className="heightCard">
+                    <h5>{item.name}</h5>
+                    {/* <p>{item.description.substring(0, 50)}</p> */}
+                  </div>
+
                   <p>{item.price}</p>
                   <div class="row justify-content-center">
                     <div class="room-btn">
-                      <button
-                        onClick={() => handleCartItems(item)}
-                        className="border-btn"
-                      >
-                        Discover More
-                      </button>
+                      <Link to={"/product/" + item.slug}>
+                        <button className="border-btn">Discover More</button>
+                      </Link>
                     </div>
                   </div>
                 </div>

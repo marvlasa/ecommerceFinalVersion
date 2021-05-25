@@ -10,7 +10,7 @@ function ProductDetail() {
   useEffect(() => {
     const getProduct = async () => {
       const response = await axios.get(`http://localhost:3079/product/${slug}`);
-      console.log(response.data);
+      console.log("branchesssss", response.data);
       setProduct(response.data);
     };
     getProduct();
