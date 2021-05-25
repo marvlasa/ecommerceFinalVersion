@@ -7,6 +7,7 @@ import axios from "axios";
 
 function ProductDetail() {
   const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
   const { slug } = useParams();
   const dispatch = useDispatch();
 
@@ -80,7 +81,7 @@ function ProductDetail() {
                   <ul class="list">
                     <li>
                       <a href="/#" class="active">
-                        <span>Category</span> : {product.categoryId}
+                        <span>Category</span> : {product.category.name}
                       </a>
                     </li>
                     <li>
@@ -94,17 +95,29 @@ function ProductDetail() {
                   <p>{product.description}</p>
                   <div class="card_area">
                     <div class="product_count d-inline-block">
-                      <span class="inumber-decrement">
+                      <span
+                        class="inumber-decrement"
+                        onClick={() => {
+                          quantity <= 0
+                            ? setQuantity(0)
+                            : setQuantity(quantity - 1);
+                        }}
+                      >
                         <i class="ti-minus"></i>
                       </span>
                       <input
                         class="input-number"
                         type="text"
-                        value="1"
-                        min="0"
+                        value={quantity}
+                        min="1"
                         max="10"
                       />
-                      <span class="number-increment">
+                      <span
+                        class="number-increment"
+                        onClick={() => {
+                          setQuantity(quantity + 1);
+                        }}
+                      >
                         <i class="ti-plus"></i>
                       </span>
                     </div>
