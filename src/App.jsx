@@ -36,7 +36,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/logout" component={Logout} />
-          <Route path="/cart" component={Cart} />
+          <Route path="/cart" render={() => <Cart cartItems={cartItems} />} />
         </Switch>
       </BrowserRouter>
     </div>
