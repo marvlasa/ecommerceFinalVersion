@@ -22,7 +22,7 @@ function Login() {
         email,
         password,
       });
-      console.log(response);
+
       dispatch({ type: "USER", payload: response.data.user });
       dispatch({ type: "TOKEN", payload: response.data.user });
       history.push("/");

@@ -26,7 +26,7 @@ function Register() {
         email,
         password,
       });
-      console.log(response.data.user);
+
       dispatch({ type: "USER", payload: response.data.user });
       dispatch({ type: "TOKEN", payload: response.data.user });
       history.push("/");

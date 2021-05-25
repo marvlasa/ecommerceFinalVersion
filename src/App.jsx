@@ -24,28 +24,14 @@ function App() {
         <Header cartItems={cartItems} setSearchField={setSearchField} />
 
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Home
-                handleCartItems={handleCartItems}
-                searchField={searchField}
-              />
-            )}
-          />
+          <Route exact path="/" render={() => <Home />} />
           <Route path="/about" component={AboutUs} />
-          <Route
-            path="/products"
-            render={() => (
-              <Products
-                handleCartItems={handleCartItems}
-                searchField={searchField}
-              />
-            )}
-          />
+          <Route path="/products" render={() => <Products />} />
 
-          <Route path="/product/:slug" component={ProductDetail} />
+          <Route
+            path="/product/:slug"
+            render={() => <ProductDetail handleCartItems={handleCartItems} />}
+          />
           <Route path="/contact" component={Contact} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />

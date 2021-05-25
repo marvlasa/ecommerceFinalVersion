@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function Header() {
+function Header({ cartItems }) {
   const [headerMenu, setHeaderMenu] = useState("none");
   const handleClick = () => {
     if (headerMenu === "none") {
@@ -85,7 +85,7 @@ function Header() {
                       <Link to="/cart">
                         <div class="card-stor">
                           <img src="assets/img/icon/card.svg" alt="" />
-                          <span>0</span>
+                          <span>{cartItems.length}</span>
                         </div>
                       </Link>
                     </li>

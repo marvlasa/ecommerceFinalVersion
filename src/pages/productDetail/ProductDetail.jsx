@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 
-function ProductDetail() {
+function ProductDetail({ handleCartItems }) {
   const [product, setProduct] = useState({});
   const { slug } = useParams();
   useEffect(() => {
     const getProduct = async () => {
       const response = await axios.get(`http://localhost:3079/product/${slug}`);
-      console.log("branchesssss", response.data);
+
       setProduct(response.data);
     };
     getProduct();
@@ -106,9 +106,12 @@ function ProductDetail() {
                       </span>
                     </div>
                     <div class="add_to_cart">
-                      <a href="/#" class="btn">
+                      <button
+                        onClick={() => handleCartItems(product)}
+                        class="btn"
+                      >
                         add to cart
-                      </a>
+                      </button>
                       <a href="/#" class="like_us">
                         {" "}
                         <i class="ti-heart"></i>{" "}
