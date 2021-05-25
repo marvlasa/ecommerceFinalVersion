@@ -78,7 +78,7 @@ function ProductDetail() {
                   <ul class="list">
                     <li>
                       <a href="/#" class="active">
-                        <span>Category</span> : {product.categoryId}
+                        <span>Category</span> : {product.category.name}
                       </a>
                     </li>
                     <li>
