@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 function ProductDetail() {
-  const [product, setProduct] = useState({ category: {} });
+  const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const { slug } = useParams();
   const dispatch = useDispatch();
@@ -82,7 +82,8 @@ function ProductDetail() {
                   <ul class="list">
                     <li>
                       <a href="/#" class="active">
-                        <span>Category</span> : {product.category.name}
+                        <span>Category</span> :{" "}
+                        {product.category && product.category.name}
                       </a>
                     </li>
                     <li>

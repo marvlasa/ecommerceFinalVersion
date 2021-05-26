@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function Cart() {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   let total = 0;
   cart.forEach((item, index) => {
@@ -54,7 +56,16 @@ function Cart() {
                               min="0"
                               max="10"
                             />
-                            <span class="input-number-increment">
+
+                            <span
+                              className="input-number-increment plus-sign"
+                              onClick={() =>
+                                dispatch({
+                                  type: "CART_ADD_ITEM",
+                                  payload: product,
+                                })
+                              }
+                            >
                               <i class="ti-plus"></i>
                             </span>
                           </div>
