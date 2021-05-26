@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 function ProductDetail() {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({ category: {} });
   const [quantity, setQuantity] = useState(1);
   const { slug } = useParams();
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function ProductDetail() {
   useEffect(() => {
     const getProduct = async () => {
       const response = await axios.get(`http://localhost:3079/product/${slug}`);
-
+      console.log(response.data);
       setProduct(response.data);
     };
     getProduct();
@@ -23,6 +23,7 @@ function ProductDetail() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div class="full-wrapper">
       <main>
@@ -125,7 +126,10 @@ function ProductDetail() {
                       <button
                         // onClick={() => addItemToCart(product)}
                         onClick={() =>
-                          dispatch({ type: "CART_ADD_ITEM", payload: product })
+                          dispatch({
+                            type: "CART_ADD_ITEM",
+                            payload: product,
+                          })
                         }
                         class="btn"
                       >

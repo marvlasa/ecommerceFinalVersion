@@ -6,8 +6,7 @@ function cartReducer(state = [], action) {
         action.payload.quantity = 1;
         return [...state, action.payload];
       } else {
-        const Index = state.indexOf(itemObject);
-        state[Index].quantity += 1;
+        itemObject.quantity += 1;
         return [...state];
       }
 
