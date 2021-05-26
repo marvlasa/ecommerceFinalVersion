@@ -107,6 +107,7 @@ function ProductDetail() {
                       >
                         <i class="ti-minus"></i>
                       </span>
+
                       <input
                         class="input-number"
                         type="text"

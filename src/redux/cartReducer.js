@@ -10,6 +10,16 @@ function cartReducer(state = [], action) {
         return [...state];
       }
 
+    case "REMOVE_ITEM_FROM_CART":
+      const itemRemoveObject = state.find((i) => i.id === action.payload.id);
+      if (itemRemoveObject.quantity > 1) {
+        itemRemoveObject.quantity -= 1;
+        return [...state];
+      } else {
+        const newState = state.filter((i) => i.id !== action.payload.id);
+        return newState;
+      }
+
     default:
       return state;
   }

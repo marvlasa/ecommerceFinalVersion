@@ -46,8 +46,16 @@ function Cart() {
                         </td>
                         <td>
                           <div class="product_count">
-                            <span class="input-number-decrement">
-                              <i class="ti-minus"></i>
+                            <span
+                              className="input-number-decrement minus-sign"
+                              onClick={() =>
+                                dispatch({
+                                  type: "REMOVE_ITEM_FROM_CART",
+                                  payload: product,
+                                })
+                              }
+                            >
+                              <i className="ti-minus"></i>
                             </span>
                             <input
                               class="input-number"
