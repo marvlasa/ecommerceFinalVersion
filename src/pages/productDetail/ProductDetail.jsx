@@ -67,12 +67,13 @@ function ProductDetail() {
           <div class="container">
             <div class="row s_product_inner">
               <div class="col-lg-5">
-                <div class="product_slider_img">
-                  <div id="vertical">
-                    <div data-thumb="assets/img/gallery/product-details2.png">
-                      <img src={product.image} class="w-100" alt="" />
-                    </div>
-                  </div>
+                <div id="vertical">
+                  <img
+                    src={product.image}
+                    class="w-100"
+                    style={{ maxHeight: "520px" }}
+                    alt=""
+                  />
                 </div>
               </div>
               <div class="col-lg-5 offset-lg-1">
@@ -159,7 +160,7 @@ function ProductDetail() {
             </div>
           </div>
         </div>
-        <section class="product_description_area">
+        {/*  <section class="product_description_area">
           <div class="container">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
@@ -701,7 +702,7 @@ function ProductDetail() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
       <Footer />
       <div id="back-top">
