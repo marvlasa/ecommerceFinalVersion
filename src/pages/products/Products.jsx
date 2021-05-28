@@ -96,6 +96,17 @@ function Products({ handleCartItems }) {
                         aria-controls="nav-Sofa"
                         aria-selected="true"
                       >
+                        All products
+                      </a>
+                      <a
+                        class="nav-item nav-link"
+                        id="nav-Sofa-tab"
+                        data-toggle="tab"
+                        href="#nav-Sofa"
+                        role="tab"
+                        aria-controls="nav-Sofa"
+                        aria-selected="true"
+                      >
                         Sofa
                       </a>
                       <a
@@ -140,19 +151,24 @@ function Products({ handleCartItems }) {
             <div class="row">
               {products.map((item) => {
                 return (
-                  <div className="col-md-4">
-                    <img className="img-fluid" src={item.image} />
-                    <div className="heightCard">
-                      <h5>{item.name}</h5>
-                      {/* <p>{item.description.substring(0, 50)}</p> */}
-                    </div>
-
-                    <p>${item.price}</p>
-                    <div class="row justify-content-center">
-                      <div class="room-btn">
-                        <Link to={"/product/" + item.slug}>
-                          <button className="btn mb-3">Discover More</button>
-                        </Link>
+                  <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div
+                      class="single-new-arrival mb-50 text-center wow fadeInUp"
+                      data-wow-duration="1s"
+                      data-wow-delay=".1s"
+                    >
+                      <div class="popular-img">
+                        <img
+                          src={item.image}
+                          className="img-fluid"
+                          alt={item.name}
+                        />
+                      </div>
+                      <div class="popular-caption">
+                        <h3>
+                          <Link to={"/product/" + item.slug}>{item.name}</Link>
+                        </h3>
+                        <span>${item.price}</span>
                       </div>
                     </div>
                   </div>

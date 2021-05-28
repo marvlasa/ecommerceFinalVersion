@@ -1,9 +1,27 @@
 import React from "react";
 import Footer from "../../components/Footer";
-import { useEffect } from "react";
-import Products from "../products/Products";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Home({ handleCartItems, searchField }) {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const URL = "http://localhost:3079/products";
+
+    const products = async () => {
+      try {
+        const response = await axios.get(URL);
+        setProducts(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    products();
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -38,9 +56,9 @@ function Home({ handleCartItems, searchField }) {
                       data-animation="fadeInUp"
                       data-delay=".7s"
                     >
-                      <a href="/#" class="btn hero-btn">
+                      <Link to="/products" class="btn hero-btn">
                         Discover More
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -68,7 +86,7 @@ function Home({ handleCartItems, searchField }) {
           </div>
           <div class="row">
             <div class="col-xl-12">
-              <div class="properties__button text-center">
+              {/* <div class="properties__button text-center">
                 <nav>
                   <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a
@@ -140,7 +158,7 @@ function Home({ handleCartItems, searchField }) {
                     </a>
                   </div>
                 </nav>
-              </div>
+              </div> */}
             </div>
           </div>
           <div class="row">
@@ -493,9 +511,9 @@ function Home({ handleCartItems, searchField }) {
               Suspendisse varius enim in eros elementum tristique. Duis cursus,
               mi quis viverra ornare, eros dolor interdum nulla.
             </p>
-            <a href="/#" class="btn">
+            <Link to="/about" class="btn">
               Discover More
-            </a>
+            </Link>
           </div>
         </div>
         <div class="new-arrival new-arrival2">
@@ -516,69 +534,37 @@ function Home({ handleCartItems, searchField }) {
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                <div
-                  class="single-new-arrival mb-50 text-center wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay=".1s"
-                >
-                  <div class="popular-img">
-                    <img src="assets/img/gallery/popular4.png" alt="" />
+              {products.map((item) => {
+                return (
+                  <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div
+                      class="single-new-arrival mb-50 text-center wow fadeInUp"
+                      data-wow-duration="1s"
+                      data-wow-delay=".1s"
+                    >
+                      <div class="popular-img">
+                        <img
+                          src={item.image}
+                          className="img-fluid"
+                          alt={item.name}
+                        />
+                      </div>
+                      <div class="popular-caption">
+                        <h3>
+                          <Link to={"/product/" + item.slug}>{item.name}</Link>
+                        </h3>
+                        <span>${item.price}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="popular-caption">
-                    <h3>
-                      <a href="/#">
-                        Bly Microfiber / Microsuede 56" Armless Loveseat
-                      </a>
-                    </h3>
-                    <span>$367</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                <div
-                  class="single-new-arrival mb-50 text-center wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay=".2s"
-                >
-                  <div class="popular-img">
-                    <img src="assets/img/gallery/popular5.png" alt="" />
-                  </div>
-                  <div class="popular-caption">
-                    <h3>
-                      <a href="/#">
-                        Bly Microfiber / Microsuede 56" Armless Loveseat
-                      </a>
-                    </h3>
-                    <span>$367</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                <div
-                  class="single-new-arrival mb-50 text-center wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay=".4s"
-                >
-                  <div class="popular-img">
-                    <img src="assets/img/gallery/popular6.png" alt="" />
-                  </div>
-                  <div class="popular-caption">
-                    <h3>
-                      <a href="/#">
-                        Bly Microfiber / Microsuede 56" Armless Loveseat
-                      </a>
-                    </h3>
-                    <span>$367</span>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
             <div class="row justify-content-center">
               <div class="room-btn">
-                <a href="/#" class="border-btn">
+                <Link to="/products" class="border-btn">
                   Discover More
-                </a>
+                </Link>
               </div>
             </div>
           </div>

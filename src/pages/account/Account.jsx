@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 function Account() {
-  /* useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
-  }, []); */
+  }, []);
   const token = useSelector((state) => state.token);
   const user = useSelector((state) => state.user);
   console.log(user);

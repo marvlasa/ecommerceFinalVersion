@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import { useSelector } from "react-redux";
@@ -7,7 +7,7 @@ import ModalCheckOut from "../../components/ModalCheckOut";
 import { Modal, Button } from "react-bootstrap";
 
 function Cart() {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   let total = 0;
@@ -15,9 +15,18 @@ function Cart() {
     total = total + item.price * item.quantity;
     //total += item.price;
   });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
-      <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        onHide={() => setModalShow(false)}
+        show={modalShow}
+      >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Modal heading
@@ -32,7 +41,7 @@ function Cart() {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => modalShow.onHide}>Close</Button>
+          <Button onClick={() => setModalShow(false)}>Close</Button>
         </Modal.Footer>
       </Modal>
       <section class="cart_area section-padding40">
