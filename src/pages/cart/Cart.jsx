@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import ModalCheckOut from "../../components/ModalCheckOut";
+import { Modal, Button } from "react-bootstrap";
 
 function Cart() {
+  const [modalShow, setModalShow] = React.useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   let total = 0;
@@ -14,6 +17,24 @@ function Cart() {
   });
   return (
     <div>
+      <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Modal heading
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Centered Modal</h4>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => modalShow.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
       <section class="cart_area section-padding40">
         <div class="container">
           <div class="cart_inner">
@@ -85,7 +106,7 @@ function Cart() {
                     );
                   })}
 
-                  <tr class="bottom_button">
+                  {/* <tr class="bottom_button">
                     <td>
                       <a class="btn" href="#">
                         Update Cart
@@ -100,7 +121,7 @@ function Cart() {
                         </a>
                       </div>
                     </td>
-                  </tr>
+                  </tr> */}
                   <tr>
                     <td></td>
                     <td></td>
@@ -118,14 +139,20 @@ function Cart() {
                 <Link to="/products" className="btn">
                   Continue Shopping
                 </Link>
-                <a class="btn checkout_btn" href="#">
-                  Proceed to checkout
-                </a>
+                <div className="checkout_btn_inner mt-5">
+                  <button
+                    onClick={() => setModalShow(true)}
+                    class="btn checkout_btn"
+                  >
+                    Proceed to checkout
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <ModalCheckOut props={modalShow} />
       <Footer />
     </div>
   );

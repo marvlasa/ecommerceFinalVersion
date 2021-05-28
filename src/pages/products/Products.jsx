@@ -137,26 +137,28 @@ function Products({ handleCartItems }) {
                 </div>
               </div>
             </div>
-            {products.map((item) => {
-              return (
-                <div class="row">
-                  <img src={item.image} />
-                  <div className="heightCard">
-                    <h5>{item.name}</h5>
-                    {/* <p>{item.description.substring(0, 50)}</p> */}
-                  </div>
+            <div class="row">
+              {products.map((item) => {
+                return (
+                  <div className="col-md-4">
+                    <img className="img-fluid" src={item.image} />
+                    <div className="heightCard">
+                      <h5>{item.name}</h5>
+                      {/* <p>{item.description.substring(0, 50)}</p> */}
+                    </div>
 
-                  <p>{item.price}</p>
-                  <div class="row justify-content-center">
-                    <div class="room-btn">
-                      <Link to={"/product/" + item.slug}>
-                        <button className="btn">Discover More</button>
-                      </Link>
+                    <p>${item.price}</p>
+                    <div class="row justify-content-center">
+                      <div class="room-btn">
+                        <Link to={"/product/" + item.slug}>
+                          <button className="btn mb-3">Discover More</button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
             {/* <div class="tab-content" id="nav-tabContent">
                       <div
                         class="tab-pane fade show active"

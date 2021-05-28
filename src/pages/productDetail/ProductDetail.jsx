@@ -97,7 +97,7 @@ function ProductDetail() {
                   </ul>
                   <p>{product.description}</p>
                   <div class="card_area">
-                    <div class="product_count d-inline-block">
+                    {/* <div class="product_count d-inline-block">
                       <span
                         class="inumber-decrement"
                         onClick={() => {
@@ -124,7 +124,7 @@ function ProductDetail() {
                       >
                         <i class="ti-plus"></i>
                       </span>
-                    </div>
+                    </div> */}
                     <div class="add_to_cart">
                       <button
                         // onClick={() => addItemToCart(product)}
