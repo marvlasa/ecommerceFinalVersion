@@ -13,7 +13,6 @@ function Products({ handleCartItems }) {
     const products = async () => {
       try {
         const response = await axios.get(URL);
-
         setProducts(response.data);
       } catch (err) {
         console.log(err);
@@ -151,7 +150,7 @@ function Products({ handleCartItems }) {
                   <div class="row justify-content-center">
                     <div class="room-btn">
                       <Link to={"/product/" + item.slug}>
-                        <button className="border-btn">Discover More</button>
+                        <button className="btn">Discover More</button>
                       </Link>
                     </div>
                   </div>

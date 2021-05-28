@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function Header() {
+  const user = useSelector((state) => state.user);
+  console.log(user);
   const cart = useSelector((state) => state.cart);
   let cartQuantity = 0;
   cart.forEach((item, index) => {
@@ -11,6 +13,10 @@ function Header() {
     //total += item.price;
   });
   const [headerMenu, setHeaderMenu] = useState("none");
+  const handleLogOut = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
   const handleClick = () => {
     if (headerMenu === "none") {
       setHeaderMenu("block");
@@ -59,11 +65,6 @@ function Header() {
                       <li>
                         <Link to="/contact">Contact</Link>
                       </li>
-                      <li>
-                        <Link to="/logout" className="text-danger">
-                          Logout
-                        </Link>
-                      </li>
                     </ul>
                   </nav>
                 </div>
@@ -84,8 +85,23 @@ function Header() {
                       </form>
                     </li>
                     <li>
-                      <Link to="/login" class="account-btn">
-                        My Account
+                      {user.name ? (
+                        <Link to="/account" class="account-btn">
+                          {user.name}
+                        </Link>
+                      ) : (
+                        <Link to="/login" class="account-btn">
+                          Login
+                        </Link>
+                      )}
+                    </li>
+                    <li>
+                      <Link
+                        to="/"
+                        onClick={handleLogOut}
+                        className="account-btn margin-left-40"
+                      >
+                        Logout
                       </Link>
                     </li>
                     <li>

@@ -5,3 +5,7 @@
 .minus-sign {
   cursor: pointer;
 }
+
+.margin-left-40 {
+  margin-left: -40px;
+}

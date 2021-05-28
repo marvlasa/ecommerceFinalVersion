@@ -1,4 +1,4 @@
-function userReducer(state = "", action) {
+function tokenReducer(state = "", action) {
   switch (action.type) {
     case "TOKEN":
       return action.payload.token;
@@ -9,4 +9,4 @@ function userReducer(state = "", action) {
   }
 }
 
-export default userReducer;
+export default tokenReducer;
