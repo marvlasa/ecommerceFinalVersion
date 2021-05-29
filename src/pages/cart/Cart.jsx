@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import ModalCheckOut from "../../components/ModalCheckOut";
-import { Modal, Button } from "react-bootstrap";
+// import { Modal, Button } from "react-bootstrap";
 
 function Cart() {
   const [modalShow, setModalShow] = useState(false);
@@ -20,30 +20,7 @@ function Cart() {
   }, []);
   return (
     <div>
-      <Modal
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        onHide={() => setModalShow(false)}
-        show={modalShow}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => setModalShow(false)}>Close</Button>
-        </Modal.Footer>
-      </Modal>
+      <ModalCheckOut modalShow={modalShow} setModalShow={setModalShow} />
       <section class="cart_area section-padding40">
         <div class="container">
           <div class="cart_inner">
@@ -150,7 +127,12 @@ function Cart() {
                 </Link>
                 <div className="checkout_btn_inner mt-5">
                   <button
-                    onClick={() => setModalShow(true)}
+                    onClick={() => {
+                      setModalShow(true);
+                      dispatch({
+                        type: "RESET_CART",
+                      });
+                    }}
                     class="btn checkout_btn"
                   >
                     Proceed to checkout
@@ -161,7 +143,6 @@ function Cart() {
           </div>
         </div>
       </section>
-      <ModalCheckOut props={modalShow} />
       <Footer />
     </div>
   );
