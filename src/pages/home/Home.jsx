@@ -8,7 +8,7 @@ function Home({ handleCartItems, searchField }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const URL = "http://localhost:3079/products";
+    const URL = "http://localhost:3079/products/highlight";
 
     const products = async () => {
       try {
