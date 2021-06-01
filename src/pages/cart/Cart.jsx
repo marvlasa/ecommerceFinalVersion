@@ -4,17 +4,36 @@ import Footer from "../../components/Footer";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import ModalCheckOut from "../../components/ModalCheckOut";
-// import { Modal, Button } from "react-bootstrap";
+import axios from "axios";
 
 function Cart() {
   const [modalShow, setModalShow] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const token = useSelector((state) => state.token);
+  console.log("CART");
+  console.log(cart);
   let total = 0;
   cart.forEach((item, index) => {
     total = total + item.price * item.quantity;
     //total += item.price;
   });
+
+  const handleCheckOut = async (item) => {
+    const URL = "http://localhost:3079/order";
+    const axiosSettings = { headers: { Authorization: "Bearer " + token } };
+    try {
+      const response = await axios.post(URL, cart, axiosSettings);
+      console.log(response);
+      dispatch({
+        type: "RESET_CART",
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    setModalShow(true);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -126,15 +145,7 @@ function Cart() {
                   Continue Shopping
                 </Link>
                 <div className="checkout_btn_inner mt-5">
-                  <button
-                    onClick={() => {
-                      setModalShow(true);
-                      dispatch({
-                        type: "RESET_CART",
-                      });
-                    }}
-                    class="btn checkout_btn"
-                  >
+                  <button onClick={handleCheckOut} class="btn checkout_btn">
                     Proceed to checkout
                   </button>
                 </div>

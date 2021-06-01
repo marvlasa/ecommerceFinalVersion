@@ -1,11 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function Header() {
+  let location = useLocation();
   const user = useSelector((state) => state.user);
-  console.log(user);
+  // console.log("----------------------");
+  // console.log("helloo", location.pathname);
+  // console.log("----------------------");
+
   const cart = useSelector((state) => state.cart);
   let cartQuantity = 0;
   cart.forEach((item, index) => {
@@ -72,18 +76,20 @@ function Header() {
               <div class="header-right1 d-flex align-items-center">
                 <div class="search">
                   <ul class="d-flex align-items-center">
-                    <li>
-                      <form action="#" class="form-box f-right">
-                        <input
-                          type="text"
-                          name="Search"
-                          placeholder="Search products"
-                        />
-                        <div class="search-icon">
-                          <i class="ti-search"></i>
-                        </div>
-                      </form>
-                    </li>
+                    {location.pathname === "/products" ? (
+                      <li>
+                        <form action="#" class="form-box f-right">
+                          <input
+                            type="text"
+                            name="Search"
+                            placeholder="Search products"
+                          />
+                          <div class="search-icon">
+                            <i class="ti-search"></i>
+                          </div>
+                        </form>
+                      </li>
+                    ) : null}
                     <li>
                       {user.name ? (
                         <Link to="/account" class="account-btn">
