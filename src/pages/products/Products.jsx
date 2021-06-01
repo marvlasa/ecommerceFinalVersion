@@ -6,7 +6,7 @@ import axios from "axios";
 
 function Products({ handleCartItems }) {
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([{}]);
   const id = useParams();
 
   useEffect(() => {
@@ -15,7 +15,8 @@ function Products({ handleCartItems }) {
     const categories = async () => {
       try {
         const response = await axios.get(URL);
-        setCategories(response.data);
+        console.log(response.data.categories);
+        setCategories(response.data.categories);
       } catch (err) {
         console.log(err);
       }
@@ -129,14 +130,13 @@ function Products({ handleCartItems }) {
                       >
                         All products
                       </Link>
-
                       {categories.map((category) => {
                         return (
                           <Link
                             class="nav-item nav-link"
                             id="nav-Sofa-tab"
                             data-toggle="tab"
-                            to={`products/category/${category.id}`}
+                            to={`${category.name}`}
                             role="tab"
                             aria-controls="nav-Sofa"
                             aria-selected="true"
@@ -144,7 +144,7 @@ function Products({ handleCartItems }) {
                             {category.name}
                           </Link>
                         );
-                      })}
+                      })}{" "}
                     </div>
                   </nav>
                 </div>
