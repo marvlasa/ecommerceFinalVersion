@@ -1,11 +1,28 @@
 import React from "react";
 import Footer from "../../components/Footer";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 function Products({ handleCartItems }) {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([{}]);
+  const id = useParams();
+
+  useEffect(() => {
+    const URL = "http://localhost:3079/category";
+
+    const categories = async () => {
+      try {
+        const response = await axios.get(URL);
+        console.log(response.data.categories);
+        setCategories(response.data.categories);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    categories();
+  }, []);
 
   useEffect(() => {
     const URL = "http://localhost:3079/products";
@@ -21,6 +38,21 @@ function Products({ handleCartItems }) {
 
     products();
   }, []);
+
+  useEffect(() => {
+    const URL = `http://localhost:3079/products/category/${id}`;
+
+    const getProducts = async () => {
+      try {
+        const response = await axios.get(URL);
+        setProducts(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getProducts();
+  }, [id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -87,62 +119,32 @@ function Products({ handleCartItems }) {
                 <div class="properties__button text-center">
                   <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <a
+                      <Link
                         class="nav-item nav-link active"
                         id="nav-Sofa-tab"
                         data-toggle="tab"
-                        href="#nav-Sofa"
+                        to="/products"
                         role="tab"
                         aria-controls="nav-Sofa"
                         aria-selected="true"
                       >
                         All products
-                      </a>
-                      <a
-                        class="nav-item nav-link"
-                        id="nav-Sofa-tab"
-                        data-toggle="tab"
-                        href="#nav-Sofa"
-                        role="tab"
-                        aria-controls="nav-Sofa"
-                        aria-selected="true"
-                      >
-                        Sofa
-                      </a>
-                      <a
-                        class="nav-item nav-link"
-                        id="nav-Table-tab"
-                        data-toggle="tab"
-                        href="#nav-Table"
-                        role="tab"
-                        aria-controls="nav-Table"
-                        aria-selected="false"
-                      >
-                        Table
-                      </a>
-                      <a
-                        class="nav-item nav-link"
-                        id="nav-Chair-tab"
-                        data-toggle="tab"
-                        href="#nav-Chair"
-                        role="tab"
-                        aria-controls="nav-Chair"
-                        aria-selected="false"
-                      >
-                        Chair
-                      </a>
-
-                      <a
-                        class="nav-item nav-link"
-                        id="nav-Bed-tab"
-                        data-toggle="tab"
-                        href="#nav-Bed"
-                        role="tab"
-                        aria-controls="nav-Bed"
-                        aria-selected="false"
-                      >
-                        Bed
-                      </a>
+                      </Link>
+                      {categories.map((category) => {
+                        return (
+                          <Link
+                            class="nav-item nav-link"
+                            id="nav-Sofa-tab"
+                            data-toggle="tab"
+                            to={`${category.name}`}
+                            role="tab"
+                            aria-controls="nav-Sofa"
+                            aria-selected="true"
+                          >
+                            {category.name}
+                          </Link>
+                        );
+                      })}{" "}
                     </div>
                   </nav>
                 </div>
