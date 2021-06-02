@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
 
 function BillingDetails() {
   const [orders, setOrders] = useState([]);
+  const [lgShow, setLgShow] = useState(false);
+  const [id, setId] = useState(0);
   console.log(orders);
   const token = useSelector((state) => state.token);
 
@@ -179,9 +182,11 @@ function BillingDetails() {
                 <th scope="col">Date</th>
                 <th scope="col">Name</th>
                 <th scope="col">Total</th>
+                <th scope="col">View</th>
               </tr>
             </thead>
-            {orders.map((order) => {
+
+            {orders.map((order, index) => {
               let total = 0;
               order.products.forEach((item) => {
                 total =
@@ -191,7 +196,13 @@ function BillingDetails() {
 
               return (
                 <tr>
-                  <Link to="/orderDetail">
+                  <tr
+                    onClick={() => {
+                      setLgShow(true);
+                      setId(index);
+                    }}
+                    id="tr"
+                  >
                     <td>
                       <div class="media">
                         <div class="media-body">
@@ -202,14 +213,39 @@ function BillingDetails() {
                     <td>
                       <h5>{order.products[0].name}</h5>
                     </td>
-                    <td></td>
                     <td>
                       <h5>${total}</h5>
                     </td>
-                  </Link>
+                  </tr>
                 </tr>
               );
             })}
+            <Modal
+              size="lg"
+              show={lgShow}
+              onHide={() => setLgShow(false)}
+              aria-labelledby="example-modal-sizes-title-lg"
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="example-modal-sizes-title-lg"></Modal.Title>{" "}
+                <p>{/* {order.createdAt} */}</p>
+              </Modal.Header>
+              <Modal.Body>
+                <tr>
+                  <td>
+                    <h5>Name</h5>
+                    <h5>
+                      {/* {order.products[0].name} */}
+                      {id}
+                    </h5>
+                  </td>
+                  <h5>Price</h5>
+                  <td>
+                    <h5>{/* ${total} */}</h5>
+                  </td>
+                </tr>
+              </Modal.Body>
+            </Modal>
           </table>
         </div>
       </div>
