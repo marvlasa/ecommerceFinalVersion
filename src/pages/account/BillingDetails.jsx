@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 
 function BillingDetails() {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState([
+    /* { products: [{ name: "", ordersProduct: { price: 0, quantity: 0 } }] }, */
+  ]);
   const [lgShow, setLgShow] = useState(false);
   const [id, setId] = useState(0);
+  const [totalModal, setTotalModal] = useState(0);
+
   console.log(orders);
   const token = useSelector((state) => state.token);
 
@@ -177,15 +181,11 @@ function BillingDetails() {
 
         <div className="col-md-4">
           <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Name</th>
-                <th scope="col">Total</th>
-                <th scope="col">View</th>
-              </tr>
-            </thead>
-
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Name</th>
+              <th scope="col">Total</th>
+            </tr>
             {orders.map((order, index) => {
               let total = 0;
               order.products.forEach((item) => {
@@ -195,28 +195,27 @@ function BillingDetails() {
               });
 
               return (
-                <tr>
-                  <tr
-                    onClick={() => {
-                      setLgShow(true);
-                      setId(index);
-                    }}
-                    id="tr"
-                  >
-                    <td>
-                      <div class="media">
-                        <div class="media-body">
-                          <p>{order.createdAt}</p>
-                        </div>
+                <tr
+                  onClick={() => {
+                    setLgShow(true);
+                    setId(index);
+                    setTotalModal(total);
+                  }}
+                  id="tr"
+                >
+                  <td>
+                    <div class="media">
+                      <div class="media-body">
+                        <p>{order.createdAt.substring(10, 0)}</p>
                       </div>
-                    </td>
-                    <td>
-                      <h5>{order.products[0].name}</h5>
-                    </td>
-                    <td>
-                      <h5>${total}</h5>
-                    </td>
-                  </tr>
+                    </div>
+                  </td>
+                  <td>
+                    <h5>{order.products[0].name}</h5>
+                  </td>
+                  <td>
+                    <h5>${total}</h5>
+                  </td>
                 </tr>
               );
             })}
@@ -231,19 +230,92 @@ function BillingDetails() {
                 <p>{/* {order.createdAt} */}</p>
               </Modal.Header>
               <Modal.Body>
-                <tr>
-                  <td>
-                    <h5>Name</h5>
-                    <h5>
-                      {/* {order.products[0].name} */}
-                      {id}
-                    </h5>
-                  </td>
-                  <h5>Price</h5>
-                  <td>
-                    <h5>{/* ${total} */}</h5>
-                  </td>
-                </tr>
+                <div>
+                  {
+                    <div>
+                      <section class="cart_area section-padding40">
+                        <div class="container">
+                          <div class="cart_inner">
+                            <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Total</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {!orders[0] ? (
+                                    <div></div>
+                                  ) : (
+                                    orders[id].products.map((product) => {
+                                      return (
+                                        <tr>
+                                          <td>
+                                            <p class="orderTitleModal">
+                                              {product.name}
+                                            </p>
+                                            <div class="media">
+                                              <div class="d-flex">
+                                                <img
+                                                  src={product.image}
+                                                  alt=""
+                                                />
+                                              </div>
+                                              <div class="media-body"></div>
+                                            </div>
+                                          </td>
+                                          <td>
+                                            <h5>
+                                              ${product.ordersProduct.price}
+                                            </h5>
+                                          </td>
+                                          <td>
+                                            <div class="product_count">
+                                              <input
+                                                class="input-number"
+                                                type="text"
+                                                value={
+                                                  product.ordersProduct.quantity
+                                                }
+                                                min="0"
+                                                max="10"
+                                              />
+                                            </div>
+                                          </td>
+                                          <td>
+                                            <h5>
+                                              $
+                                              {product.ordersProduct.price *
+                                                product.ordersProduct.quantity}
+                                            </h5>
+                                          </td>
+                                        </tr>
+                                      );
+                                    })
+                                  )}
+                                  <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                      <h5>Total</h5>
+                                    </td>
+                                    <td>
+                                      <h5>${totalModal}</h5>
+                                    </td>
+                                  </tr>
+                                  <tr class="shipping_area"></tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  }
+                </div>
               </Modal.Body>
             </Modal>
           </table>
