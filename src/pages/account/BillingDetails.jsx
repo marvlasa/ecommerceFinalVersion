@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function BillingDetails() {
   const [orders, setOrders] = useState([]);
@@ -190,20 +191,22 @@ function BillingDetails() {
 
               return (
                 <tr>
-                  <td>
-                    <div class="media">
-                      <div class="media-body">
-                        <p>{order.createdAt}</p>
+                  <Link to="/orderDetail">
+                    <td>
+                      <div class="media">
+                        <div class="media-body">
+                          <p>{order.createdAt}</p>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>{order.products[0].name}</h5>
-                  </td>
-                  <td></td>
-                  <td>
-                    <h5>${total}</h5>
-                  </td>
+                    </td>
+                    <td>
+                      <h5>{order.products[0].name}</h5>
+                    </td>
+                    <td></td>
+                    <td>
+                      <h5>${total}</h5>
+                    </td>
+                  </Link>
                 </tr>
               );
             })}
