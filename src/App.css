@@ -18,3 +18,11 @@
 #tr {
   cursor: pointer;
 }
+
+.translate-x {
+  transform: translateX(300px);
+}
+
+i {
+  font-size: 5rem;
+}
