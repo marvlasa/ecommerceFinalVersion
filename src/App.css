@@ -18,3 +18,7 @@
 #tr {
   cursor: pointer;
 }
+
+.orderTitleModal {
+  font-size: 1.6rem;
+}
