@@ -1,4 +1,5 @@
 import "./App.css";
+import BillingDetails from "./pages/account/BillingDetails";
 import Home from "./pages/home/Home";
 import AboutUs from "./pages/aboutUs/AboutUs";
 import Products from "./pages/products/Products";
@@ -10,6 +11,7 @@ import Logout from "./pages/logout/Logout";
 import Account from "./pages/account/Account";
 import Cart from "./pages/cart/Cart";
 import Header from "./components/Header";
+import OrderDetail from "./pages/orderDetail/OrderDetail";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 
@@ -28,6 +30,7 @@ function App() {
 
         <Switch>
           <Route exact path="/" render={() => <Home />} />
+
           <Route path="/about" component={AboutUs} />
           <Route path="/products" render={() => <Products />} />
           <Route path="/product/:slug" render={() => <ProductDetail />} />
@@ -36,7 +39,9 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/logout" component={Logout} />
           <Route path="/cart" render={() => <Cart />} />
-          <Route path="/account" component={Account} />
+          <Route path="/account" component={BillingDetails} />
+          <Route path="/billingDetails" component={Account} />
+          <Route path="/orderDetail" component={OrderDetail} />
         </Switch>
       </BrowserRouter>
     </div>
