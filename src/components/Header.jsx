@@ -3,7 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-function Header() {
+function Header({ setSearchField }) {
+  function handleChange(event) {
+    setSearchField(event.target.value);
+  }
+
   let location = useLocation();
   const user = useSelector((state) => state.user);
   // console.log("----------------------");
@@ -83,6 +87,7 @@ function Header() {
                             type="text"
                             name="Search"
                             placeholder="Search products"
+                            onChange={handleChange}
                           />
                           <div class="search-icon">
                             <i class="ti-search"></i>
