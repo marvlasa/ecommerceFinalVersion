@@ -22,3 +22,11 @@
 .orderTitleModal {
   font-size: 1.6rem;
 }
+
+.shadow-box {
+  box-shadow: 0 0 5px #a9a9a9;
+}
+
+.btn-center {
+  margin: 10px 0 0 210px;
+}
