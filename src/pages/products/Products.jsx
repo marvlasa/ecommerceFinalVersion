@@ -1,13 +1,13 @@
 import React from "react";
 import Footer from "../../components/Footer";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-function Products({ handleCartItems, searchField }) {
+function Products({ searchField }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([{}]);
-  const id = useParams();
+  const [categoriesId, setCategoriesId] = useState(0);
 
   const filteredProducts = products.filter((item) => {
     return item.name.toLowerCase().includes(searchField.toLowerCase());
@@ -30,22 +30,25 @@ function Products({ handleCartItems, searchField }) {
 
   useEffect(() => {
     const URL = "http://localhost:3079/products";
-
     const products = async () => {
       try {
         const response = await axios.get(URL);
         setProducts(response.data);
+        console.log(response.data);
       } catch (err) {
         console.log(err);
       }
     };
-
     products();
   }, []);
 
-  useEffect(() => {
-    const URL = `http://localhost:3079/products/category/${id}`;
-
+  const handleSomething = (id) => {
+    let URL = "";
+    if (id === 0) {
+      URL = "http://localhost:3079/products";
+    } else {
+      URL = `http://localhost:3079/products/category/${id}`;
+    }
     const getProducts = async () => {
       try {
         const response = await axios.get(URL);
@@ -54,9 +57,8 @@ function Products({ handleCartItems, searchField }) {
         console.log(err);
       }
     };
-
     getProducts();
-  }, [id]);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -123,30 +125,32 @@ function Products({ handleCartItems, searchField }) {
                 <div class="properties__button text-center">
                   <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <Link
+                      <a
                         class="nav-item nav-link active"
                         id="nav-Sofa-tab"
                         data-toggle="tab"
-                        to="/products"
+                        href="/#"
                         role="tab"
                         aria-controls="nav-Sofa"
                         aria-selected="true"
+                        onClick={() => handleSomething(0)}
                       >
                         All products
-                      </Link>
+                      </a>
                       {categories.map((category) => {
                         return (
-                          <Link
+                          <a
                             class="nav-item nav-link"
                             id="nav-Sofa-tab"
                             data-toggle="tab"
-                            to={`${category.name}`}
+                            href="/#"
                             role="tab"
                             aria-controls="nav-Sofa"
                             aria-selected="true"
+                            onClick={() => handleSomething(category.id)}
                           >
                             {category.name}
-                          </Link>
+                          </a>
                         );
                       })}{" "}
                     </div>
@@ -184,214 +188,6 @@ function Products({ handleCartItems, searchField }) {
                   );
                 })}
             </div>
-            {/* <div class="tab-content" id="nav-tabContent">
-                      <div
-                        class="tab-pane fade show active"
-                        id="nav-Sofa"
-                        role="tabpanel"
-                        aria-labelledby="nav-Sofa-tab"
-                      ></div>
-
-                      <div
-                        class="tab-pane fade"
-                        id="nav-Table"
-                        role="tabpanel"
-                        aria-labelledby="nav-Table-tab"
-                      >
-                        <div class="row">
-                          <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-new-arrival mb-50 text-center">
-                              <div class="popular-img">
-                                <img
-                                  src="assets/img/gallery/popular1.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="popular-caption">
-                                <h3>
-                                  <a href="/#">
-                                    Bly Microfiber / Microsuede 56" Armless
-                                    Loveseat
-                                  </a>
-                                </h3>
-                                <span>$367</span>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-new-arrival mb-50 text-center">
-                              <div class="popular-img">
-                                <img
-                                  src="assets/img/gallery/popular8.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="popular-caption">
-                                <h3>
-                                  <a href="/#">
-                                    Bly Microfiber / Microsuede 56" Armless
-                                    Loveseat
-                                  </a>
-                                </h3>
-                                <span>$367</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-new-arrival mb-50 text-center">
-                              <div class="popular-img">
-                                <img
-                                  src="assets/img/gallery/popular9.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="popular-caption">
-                                <h3>
-                                  <a href="/#">
-                                    Bly Microfiber / Microsuede 56" Armless
-                                    Loveseat
-                                  </a>
-                                </h3>
-                                <span>$367</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-Chair"
-                        role="tabpanel"
-                        aria-labelledby="nav-Chair-tab"
-                      >
-                        <div class="row">
-                          <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-new-arrival mb-50 text-center">
-                              <div class="popular-img">
-                                <img
-                                  src="assets/img/gallery/popular7.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="popular-caption">
-                                <h3>
-                                  <a href="/#">
-                                    Bly Microfiber / Microsuede 56" Armless
-                                    Loveseat
-                                  </a>
-                                </h3>
-                                <span>$367</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-new-arrival mb-50 text-center">
-                              <div class="popular-img">
-                                <img
-                                  src="assets/img/gallery/popular8.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="popular-caption">
-                                <h3>
-                                  <a href="/#">
-                                    Bly Microfiber / Microsuede 56" Armless
-                                    Loveseat
-                                  </a>
-                                </h3>
-                                <span>$367</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-new-arrival mb-50 text-center">
-                              <div class="popular-img">
-                                <img
-                                  src="assets/img/gallery/popular9.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="popular-caption">
-                                <h3>
-                                  <a href="/#">
-                                    Bly Microfiber / Microsuede 56" Armless
-                                    Loveseat
-                                  </a>
-                                </h3>
-                                <span>$367</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-Bed"
-                        role="tabpanel"
-                        aria-labelledby="nav-Bed-tab"
-                      >
-                        <div class="row">
-                          <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-new-arrival mb-50 text-center">
-                              <div class="popular-img">
-                                <img
-                                  src="assets/img/gallery/popular3.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="popular-caption">
-                                <h3>
-                                  <a href="/#">
-                                    Bly Microfiber / Microsuede 56" Armless
-                                    Loveseat
-                                  </a>
-                                </h3>
-                                <span>$367</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-new-arrival mb-50 text-center">
-                              <div class="popular-img">
-                                <img
-                                  src="assets/img/gallery/popular4.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="popular-caption">
-                                <h3>
-                                  <a href="/#">
-                                    Bly Microfiber / Microsuede 56" Armless
-                                    Loveseat
-                                  </a>
-                                </h3>
-                                <span>$367</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-new-arrival mb-50 text-center">
-                              <div class="popular-img">
-                                <img
-                                  src="assets/img/gallery/popular5.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="popular-caption">
-                                <h3>
-                                  <a href="/#">
-                                    Bly Microfiber / Microsuede 56" Armless
-                                    Loveseat
-                                  </a>
-                                </h3>
-                                <span>$367</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
           </div>
         </section>
       </main>
