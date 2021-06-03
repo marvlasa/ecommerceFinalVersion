@@ -19,6 +19,13 @@
   cursor: pointer;
 }
 
+.translate-x {
+  transform: translateX(15%);
+}
+
+.pera i {
+  font-size: 5rem;
+}
 .orderTitleModal {
   font-size: 1.6rem;
 }
