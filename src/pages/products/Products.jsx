@@ -7,7 +7,6 @@ import axios from "axios";
 function Products({ searchField }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([{}]);
-  const [categoriesId, setCategoriesId] = useState(0);
 
   const filteredProducts = products.filter((item) => {
     return item.name.toLowerCase().includes(searchField.toLowerCase());
@@ -112,10 +111,11 @@ function Products({ searchField }) {
                   data-wow-duration="1s"
                   data-wow-delay=".2s"
                 >
-                  <h2>Popular products</h2>
+                  <h2>Make over your room</h2>
                   <p>
-                    Suspendisse varius enim in eros elementum tristique. Duis
-                    cursus, mi quis viverra ornare, eros dolor interdum nulla.
+                    Lean into an easy, breezy summer: Warm woods and a
+                    shades-of-white foundation conjure a coastal state of mind
+                    wherever you are.
                   </p>
                 </div>
               </div>

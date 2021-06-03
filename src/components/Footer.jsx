@@ -84,9 +84,8 @@ function Footer() {
                     <div class="footer-tittle">
                       <div class="footer-pera">
                         <p>
-                          Suspendisse varius enim in eros elementum tristique.
-                          Duis cursus, mi quis viverra ornare, eros dolor
-                          interdum nulla.
+                          Mindfully made, modern designs for everyday comfort
+                          and timeless style.
                         </p>
                       </div>
                     </div>
@@ -173,7 +172,8 @@ function Footer() {
                       All rights reserved | This template is made with
                       <i class="fa fa-heart" aria-hidden="true"></i> by
                       <a href="/#" target="_blank">
-                        Colorlib
+                        Nicolás Curbelo, Kevin Mullin, Marcos Sierra, Martín
+                        Vlasanovich
                       </a>
                     </p>
                   </div>

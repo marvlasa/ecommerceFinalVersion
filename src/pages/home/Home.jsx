@@ -48,8 +48,12 @@ function Home({ handleCartItems, searchField }) {
                       Furniture at Cost
                     </h1>
                     <p data-animation="fadeInUp" data-delay=".6s">
-                      Suspendisse varius enim in eros elementum tristique. Duis
-                      cursus, mi quis viverra ornare, eros dolor interdum nulla.
+                      Fill your home with furniture that brings you comfort as
+                      soon as you walk in the door. From cozy sectionals that
+                      work well for big get-togethers to beds that invite you
+                      for a good night’s sleep after a long day, when you want
+                      to add modern, contemporary flair to your living space,
+                      west elm has a wealth of items to enliven your space.
                     </p>
                     <div
                       class="hero__btn"
@@ -78,8 +82,8 @@ function Home({ handleCartItems, searchField }) {
               >
                 <h2>Popular products</h2>
                 <p>
-                  Suspendisse varius enim in eros elementum tristique. Duis
-                  cursus, mi quis viverra ornare, eros dolor interdum nulla.
+                  Are you designing a space from scratch or adding the finishing
+                  touches? Start here.
                 </p>
               </div>
             </div>
@@ -504,13 +508,10 @@ function Home({ handleCartItems, searchField }) {
               manufacturer
             </h2>
             <p>
-              Suspendisse varius enim in eros elementum tristique. Duis cursus,
-              mi quis viverra ornare, eros dolor interdum nulla.
+              If you want to know more about the coders who make this remarkable
+              site. Click below!
             </p>
-            <p class="pera-bottom">
-              Suspendisse varius enim in eros elementum tristique. Duis cursus,
-              mi quis viverra ornare, eros dolor interdum nulla.
-            </p>
+
             <Link to="/about" class="btn">
               Discover More
             </Link>
@@ -526,10 +527,7 @@ function Home({ handleCartItems, searchField }) {
                   data-wow-delay=".2s"
                 >
                   <h2>Products you may like</h2>
-                  <p>
-                    Suspendisse varius enim in eros elementum tristique. Duis
-                    cursus, mi quis viverra ornare, eros dolor interdum nulla.
-                  </p>
+                  <p>Select the wide range of products we offer</p>
                 </div>
               </div>
             </div>
