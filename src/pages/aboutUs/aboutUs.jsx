@@ -88,10 +88,7 @@ function AboutUs() {
                 <div class="instra-tittle mb-40">
                   <div class="section-tittle">
                     <h2>Marcos Sierra</h2>
-                    <p class="mb-35">
-                      Suspendisse varius enim in eros elementum tristique. Duis
-                      cursus, mi quis viverra ornare, eros dolor interdum nulla.
-                    </p>
+                    <p class="mb-35">In charge of</p>
                     <a
                       href="https://www.linkedin.com/in/masnc7/"
                       class="border-btn"
@@ -119,8 +116,9 @@ function AboutUs() {
                   <div class="section-tittle">
                     <h2>Kevin Mullin</h2>
                     <p class="mb-35">
-                      Suspendisse varius enim in eros elementum tristique. Duis
-                      cursus, mi quis viverra ornare, eros dolor interdum nulla.
+                      Using his sixth sense, he was able to solve the most
+                      complex problems we faced. Mainly, in charge of the
+                      back-end, but also giving support to the front-end team.
                     </p>
                     <a
                       href="https://www.linkedin.com/in/kevin-mullin-ferres/"
@@ -154,8 +152,9 @@ function AboutUs() {
                   <div class="section-tittle">
                     <h2>Martín Vlasanovich</h2>
                     <p class="mb-35">
-                      Suspendisse varius enim in eros elementum tristique. Duis
-                      cursus, mi quis viverra ornare, eros dolor interdum nulla.
+                      Mainly developing the front-end interface using react.js
+                      and redux technologies. Also, supporting the back-end team
+                      in the creation of the MVC model.
                     </p>
                     <a
                       href="https://www.linkedin.com/in/martinvlasanovich/"
@@ -188,8 +187,8 @@ function AboutUs() {
                   <div class="section-tittle">
                     <h2>Nicolás Curbelo</h2>
                     <p class="mb-35">
-                      Suspendisse varius enim in eros elementum tristique. Duis
-                      cursus, mi quis viverra ornare, eros dolor interdum nulla.
+                      In charge of the back-end logic. Also, giving support in
+                      front-end activities with React.js and Redux technologies.
                     </p>
                     <a
                       href="https://www.linkedin.com/in/nicolascurbelo/"

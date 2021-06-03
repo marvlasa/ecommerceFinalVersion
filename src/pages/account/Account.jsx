@@ -110,7 +110,7 @@ function BillingDetails() {
       </div>
       <div class="container pt-5 billing_details">
         <div class="row billing_css">
-          <div class="col-md-7 shadow-box">
+          <div class="col-md-7 shadow-box p-4 ">
             <h3 className="BD-title">Billing Details</h3>
             <form
               class="row contact_form"
