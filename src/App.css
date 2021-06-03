@@ -20,10 +20,10 @@
 }
 
 .translate-x {
-  transform: translateX(300px);
+  transform: translateX(15%);
 }
 
-i {
+.pera i {
   font-size: 5rem;
 }
 .orderTitleModal {
