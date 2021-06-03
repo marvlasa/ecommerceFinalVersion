@@ -1,5 +1,5 @@
 import "./App.css";
-import BillingDetails from "./pages/account/BillingDetails";
+
 import Home from "./pages/home/Home";
 import AboutUs from "./pages/aboutUs/AboutUs";
 import Products from "./pages/products/Products";
@@ -39,8 +39,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/logout" component={Logout} />
           <Route path="/cart" render={() => <Cart />} />
-          <Route path="/account" component={BillingDetails} />
-          <Route path="/billingDetails" component={Account} />
+          <Route path="/account" component={Account} />
           <Route path="/orderDetail" component={OrderDetail} />
         </Switch>
       </BrowserRouter>
