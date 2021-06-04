@@ -3,9 +3,9 @@ import Footer from "../../components/Footer";
 import { useEffect } from "react";
 
 function AboutUs() {
-  useEffect(() => {
+  /* useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, []); */
   return (
     <div>
       <main>
@@ -81,142 +81,97 @@ function AboutUs() {
           </div>
         </div>
 
-        <div class="instagram-area pb-padding translate-x">
-          <div class="container-fluid">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="instra-tittle mb-40">
-                  <div class="section-tittle">
-                    <h2>Marcos Sierra</h2>
-                    <p class="mb-35">
-                      In charge of the admin logic and also giving support to
-                      the back-end with Routes. Also, supporting front-end team
-                      with React.js and Redux technologies.
-                    </p>
-                    <a
-                      href="https://www.linkedin.com/in/masnc7/"
-                      class="border-btn"
-                    >
-                      Hire me!
-                    </a>
-                  </div>
-                </div>
+        <div class="container pb-5">
+          <div class="pb-padding px-5 row justify-content-center">
+            <div class="col-lg-5 col-md-7 col-6">
+              <div class="section-tittle">
+                <h2>Marcos Sierra</h2>
+                <p class="mb-35">
+                  In charge of the admin logic and also giving support to the
+                  back-end with Routes. Also, supporting front-end team with
+                  React.js and Redux technologies.
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/masnc7/"
+                  class="border-btn"
+                >
+                  Hire me!
+                </a>
               </div>
-              <div class="col-xl-9 col-lg-9">
-                <div class="row no-gutters">
-                  <div class="col-sm-5">
-                    <img
-                      src="assets/img/marcos3.jpeg"
-                      alt=""
-                      class="w-100 limit-img-size"
-                    />
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-6">
+              <img src="assets/img/marcos3.jpeg" alt="" class="w-100" />
             </div>
           </div>
         </div>
-        <div class="instagram-area pb-padding translate-x">
-          <div class="container-fluid">
-            <div class="row align-items-center">
-              <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="instra-tittle mb-40">
-                  <div class="section-tittle">
-                    <h2>Kevin Mullin</h2>
-                    <p class="mb-35">
-                      Using his sixth sense, he was able to solve the most
-                      complex problems we faced. Mainly, in charge of the
-                      back-end, but also giving support to the front-end team.
-                    </p>
-                    <a
-                      href="https://www.linkedin.com/in/kevin-mullin-ferres/"
-                      class="border-btn"
-                    >
-                      Hire me!
-                    </a>
-                  </div>
-                </div>
+
+        <div class="container pb-5">
+          <div class="pb-padding px-5 row justify-content-center">
+            <div class="col-lg-5 col-md-7 col-6">
+              <div class="section-tittle">
+                <h2>Kevin Mullin</h2>
+                <p class="mb-35">
+                  Using his sixth sense, he was able to solve the most complex
+                  problems we faced. Mainly, in charge of the back-end, but also
+                  giving support to the front-end team.
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/kevin-mullin-ferres/"
+                  class="border-btn"
+                >
+                  Hire me!
+                </a>
               </div>
-              <div class="col-xl-9 col-lg-8">
-                <div class="row no-gutters">
-                  <div class="col-sm-5">
-                    <img
-                      src="assets/img/kevin3.jpeg"
-                      alt=""
-                      class="w-100 img-fluid"
-                    />
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-6">
+              <img src="assets/img/kevin3.jpeg" alt="" class="w-100" />
             </div>
           </div>
         </div>
-        <div class="instagram-area pb-padding translate-x">
-          <div class="container-fluid">
-            <div class="row align-items-center">
-              <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="instra-tittle mb-40">
-                  <div class="section-tittle">
-                    <h2>Martín Vlasanovich</h2>
-                    <p class="mb-35">
-                      Mainly developing the front-end interface using react.js
-                      and redux technologies. Also, supporting the back-end team
-                      in the creation of the MVC model.
-                    </p>
-                    <a
-                      href="https://www.linkedin.com/in/martinvlasanovich/"
-                      class="border-btn"
-                    >
-                      Hire me!
-                    </a>
-                  </div>
-                </div>
+
+        <div class="container pb-5">
+          <div class="pb-padding px-5 row justify-content-center">
+            <div class="col-lg-5 col-md-7 col-6">
+              <div class="section-tittle">
+                <h2>Martín Vlasanovich</h2>
+                <p class="mb-35">
+                  Mainly developing the front-end interface using react.js and
+                  redux technologies. Also, supporting the back-end team in the
+                  creation of the MVC model.
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/martinvlasanovich/"
+                  class="border-btn"
+                >
+                  Hire me!
+                </a>
               </div>
-              <div class="col-xl-9 col-lg-8">
-                <div class="row no-gutters">
-                  <div class="col-sm-5">
-                    <img
-                      src="assets/img/martin3.jpeg"
-                      alt=""
-                      class="w-100 img-fluid"
-                    />
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-6">
+              <img src="assets/img/martin3.jpeg" alt="" class="w-100" />
             </div>
           </div>
         </div>
-        <div class="instagram-area pb-padding translate-x">
-          <div class="container-fluid">
-            <div class="row align-items-center">
-              <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="instra-tittle mb-40">
-                  <div class="section-tittle">
-                    <h2>Nicolás Curbelo</h2>
-                    <p class="mb-35">
-                      In charge of the back-end logic. Also, giving support in
-                      front-end activities with React.js and Redux technologies.
-                    </p>
-                    <a
-                      href="https://www.linkedin.com/in/nicolascurbelo/"
-                      class="border-btn"
-                    >
-                      Hire me!
-                    </a>
-                  </div>
-                </div>
+
+        <div class="container pb-5">
+          <div class="pb-padding px-5 row justify-content-center">
+            <div class="col-lg-5 col-md-7 col-6">
+              <div class="section-tittle">
+                <h2>Nicolás Curbelo</h2>
+                <p class="mb-35">
+                  In charge of the back-end logic. Also, giving support in
+                  front-end activities with React.js and Redux technologies.
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/nicolascurbelo/"
+                  class="border-btn"
+                >
+                  Hire me!
+                </a>
               </div>
-              <div class="col-xl-9 col-lg-8">
-                <div class="row no-gutters">
-                  <div class="col-sm-5">
-                    <img
-                      src="assets/img/nicolas3.jpg"
-                      alt=""
-                      class="w-100 img-fluid"
-                    />
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-6">
+              <img src="assets/img/nicolas3.jpg" alt="" class="w-100" />
             </div>
           </div>
         </div>
