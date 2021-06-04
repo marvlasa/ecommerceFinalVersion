@@ -3,9 +3,9 @@ import Footer from "../../components/Footer";
 import { useEffect } from "react";
 
 function AboutUs() {
-  /* useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
-  }, []); */
+  }, []);
   return (
     <div>
       <main>
@@ -61,12 +61,12 @@ function AboutUs() {
               <div class="col-lg-10">
                 <div class="section-tittle mb-60 text-center pt-10">
                   <h2>Tech Stack</h2>
-                  <p class="pera">
-                    <i class="fab fa-html5 mr-5 "></i>
+                  <p class="">
+                    <i class="fab fa-html5 ml-5 mr-5 "></i>
                     <i class="fab fa-css3-alt mr-5"></i>
                     <i class="fab fa-react mr-5 "></i>
                     <i class="fab fa-node-js mr-5"></i>
-                    <i class="fas fa-database"></i>
+                    <i class="fas fa-database "></i>
                   </p>
                 </div>
               </div>

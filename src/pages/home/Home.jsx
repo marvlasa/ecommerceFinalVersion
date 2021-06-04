@@ -508,7 +508,7 @@ function Home({ handleCartItems, searchField }) {
               manufacturer
             </h2>
             <p>
-              If you want to know more about the coders who make this remarkable
+              If you want to know more about the coders who made this remarkable
               site. Click below!
             </p>
 

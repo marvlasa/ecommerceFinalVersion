@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ModalCheckOut from "../../components/ModalCheckOut";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Cart() {
   const [modalShow, setModalShow] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const token = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user);
+  let history = useHistory();
+
   console.log("CART");
   console.log(cart);
   let total = 0;
@@ -20,18 +23,22 @@ function Cart() {
   });
 
   const handleCheckOut = async (item) => {
-    const URL = "http://localhost:3079/order";
-    const axiosSettings = { headers: { Authorization: "Bearer " + token } };
-    try {
-      const response = await axios.post(URL, cart, axiosSettings);
-      console.log(response);
-      dispatch({
-        type: "RESET_CART",
-      });
-    } catch (err) {
-      console.log(err);
+    if (user.name) {
+      const URL = "http://localhost:3079/order";
+      const axiosSettings = { headers: { Authorization: "Bearer " + token } };
+      try {
+        const response = await axios.post(URL, cart, axiosSettings);
+        console.log(response);
+        dispatch({
+          type: "RESET_CART",
+        });
+      } catch (err) {
+        console.log(err);
+      }
+      setModalShow(true);
+    } else {
+      history.push("/login");
     }
-    setModalShow(true);
   };
 
   useEffect(() => {
@@ -111,22 +118,6 @@ function Cart() {
                     );
                   })}
 
-                  {/* <tr class="bottom_button">
-                    <td>
-                      <a class="btn" href="#">
-                        Update Cart
-                      </a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="cupon_text float-right">
-                        <a class="btn" href="#">
-                          Close Coupon
-                        </a>
-                      </div>
-                    </td>
-                  </tr> */}
                   <tr>
                     <td></td>
                     <td></td>
