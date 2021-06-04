@@ -23,8 +23,13 @@ function Home({ handleCartItems, searchField }) {
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   }, []);
+
   return (
     <div class="full-wrapper">
       <div class="slider-area">
