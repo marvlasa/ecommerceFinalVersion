@@ -158,12 +158,12 @@ function Contact() {
         </section>
       </main>
       <Footer />
-      <div id="back-top">
-        <a title="Go to Top" href="/#">
-          {" "}
-          <i class="fas fa-level-up-alt"></i>
-        </a>
-      </div>
+      {/* <div id="back-top">
+          <a title="Go to Top" href="/#">
+            {" "}
+            <i class="fas fa-level-up-alt"></i>
+          </a>
+        </div> */}
     </div>
   );
 }

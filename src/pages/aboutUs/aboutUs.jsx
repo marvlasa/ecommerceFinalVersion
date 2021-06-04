@@ -66,7 +66,7 @@ function AboutUs() {
                     <i class="fab fa-css3-alt mr-5"></i>
                     <i class="fab fa-react mr-5 "></i>
                     <i class="fab fa-node-js mr-5"></i>
-                    <i class="fas fa-database  mr-5"></i>
+                    <i class="fas fa-database"></i>
                   </p>
                 </div>
               </div>
