@@ -88,7 +88,11 @@ function AboutUs() {
                 <div class="instra-tittle mb-40">
                   <div class="section-tittle">
                     <h2>Marcos Sierra</h2>
-                    <p class="mb-35">In charge of</p>
+                    <p class="mb-35">
+                      In charge of the admin logic and also giving support to
+                      the back-end with Routes. Also, supporting front-end team
+                      with React.js and Redux technologies.
+                    </p>
                     <a
                       href="https://www.linkedin.com/in/masnc7/"
                       class="border-btn"
@@ -98,10 +102,14 @@ function AboutUs() {
                   </div>
                 </div>
               </div>
-              <div class="col-xl-9 col-lg-8">
+              <div class="col-xl-9 col-lg-9">
                 <div class="row no-gutters">
-                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <img src="assets/img/marcos.jpeg" alt="" class="w-100" />
+                  <div class="col-sm-5">
+                    <img
+                      src="assets/img/marcos3.jpeg"
+                      alt=""
+                      class="w-100 limit-img-size"
+                    />
                   </div>
                 </div>
               </div>
@@ -131,12 +139,11 @@ function AboutUs() {
               </div>
               <div class="col-xl-9 col-lg-8">
                 <div class="row no-gutters">
-                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                  <div class="col-sm-5">
                     <img
-                      src="assets/img/kevin.jpeg"
+                      src="assets/img/kevin3.jpeg"
                       alt=""
                       class="w-100 img-fluid"
-                      style={{ height: "457px" }}
                     />
                   </div>
                 </div>
@@ -167,9 +174,9 @@ function AboutUs() {
               </div>
               <div class="col-xl-9 col-lg-8">
                 <div class="row no-gutters">
-                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                  <div class="col-sm-5">
                     <img
-                      src="assets/img/martin.jpeg"
+                      src="assets/img/martin3.jpeg"
                       alt=""
                       class="w-100 img-fluid"
                     />
@@ -201,9 +208,9 @@ function AboutUs() {
               </div>
               <div class="col-xl-9 col-lg-8">
                 <div class="row no-gutters">
-                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                  <div class="col-sm-5">
                     <img
-                      src="assets/img/nicolas.jpg"
+                      src="assets/img/nicolas3.jpg"
                       alt=""
                       class="w-100 img-fluid"
                     />

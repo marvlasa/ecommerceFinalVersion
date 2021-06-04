@@ -42,3 +42,8 @@
 .BD-title {
   margin-top: 20px;
 }
+
+.limit-img-size {
+  max-width: 340px;
+  max-height: 340px;
+}
