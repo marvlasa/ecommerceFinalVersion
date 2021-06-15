@@ -17,7 +17,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const URL = "http://localhost:3079/client";
+    const URL = "https://ecommerce-back-end-fv.vercel.app/client";
 
     try {
       const response = await axios.post(URL, {

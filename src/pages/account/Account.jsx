@@ -32,7 +32,7 @@ function BillingDetails() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const URL = "http://localhost:3079/client";
+    const URL = "https://ecommerce-back-end-fv.vercel.app/client";
     const axiosSettings = { headers: { Authorization: "Bearer " + token } };
 
     try {
@@ -56,7 +56,7 @@ function BillingDetails() {
   };
 
   useEffect(() => {
-    const URL = "http://localhost:3079/orders";
+    const URL = "https://ecommerce-back-end-fv.vercel.app/orders";
     const axiosSettings = { headers: { Authorization: "Bearer " + token } };
     const getOrders = async () => {
       try {

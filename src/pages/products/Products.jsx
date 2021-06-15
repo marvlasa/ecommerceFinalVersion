@@ -13,7 +13,7 @@ function Products({ searchField }) {
   });
 
   useEffect(() => {
-    const URL = "http://localhost:3079/category";
+    const URL = "https://ecommerce-back-end-fv.vercel.app/category";
 
     const categories = async () => {
       try {
@@ -28,7 +28,7 @@ function Products({ searchField }) {
   }, []);
 
   useEffect(() => {
-    const URL = "http://localhost:3079/products";
+    const URL = "https://ecommerce-back-end-fv.vercel.app/products";
     const products = async () => {
       try {
         const response = await axios.get(URL);
@@ -44,9 +44,9 @@ function Products({ searchField }) {
   const handleSomething = (id) => {
     let URL = "";
     if (id === 0) {
-      URL = "http://localhost:3079/products";
+      URL = "https://ecommerce-back-end-fv.vercel.app/products";
     } else {
-      URL = `http://localhost:3079/products/category/${id}`;
+      URL = `https://ecommerce-back-end-fv.vercel.app/products/category/${id}`;
     }
     const getProducts = async () => {
       try {

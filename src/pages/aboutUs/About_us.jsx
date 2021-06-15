@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../../components/Footer";
 import { useEffect } from "react";
 
-function AboutUs() {
+function About_us() {
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -191,4 +191,4 @@ function AboutUs() {
   );
 }
 
-export default AboutUs;
+export default About_us;

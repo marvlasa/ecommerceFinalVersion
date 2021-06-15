@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function Home({ handleCartItems, searchField }) {
+function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const URL = "http://localhost:3079/products/highlight";
+    const URL = "https://ecommerce-back-end-fv.vercel.app/products/highlight";
 
     const products = async () => {
       try {

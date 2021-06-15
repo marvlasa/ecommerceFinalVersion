@@ -24,7 +24,7 @@ function Cart() {
 
   const handleCheckOut = async (item) => {
     if (user.name) {
-      const URL = "http://localhost:3079/order";
+      const URL = "https://ecommerce-back-end-fv.vercel.app/order";
       const axiosSettings = { headers: { Authorization: "Bearer " + token } };
       try {
         const response = await axios.post(URL, cart, axiosSettings);

@@ -31,7 +31,9 @@ function ProductDetail() {
 
   useEffect(() => {
     const getProduct = async () => {
-      const response = await axios.get(`http://localhost:3079/product/${slug}`);
+      const response = await axios.get(
+        `https://ecommerce-back-end-fv.vercel.app/product/${slug}`
+      );
       console.log(response.data);
       setProduct(response.data);
     };

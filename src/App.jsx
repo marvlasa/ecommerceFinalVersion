@@ -1,7 +1,7 @@
 import "./App.css";
 
 import Home from "./pages/home/Home";
-import AboutUs from "./pages/aboutUs/AboutUs";
+import About_us from "./pages/aboutUs/About_us";
 import Products from "./pages/products/Products";
 import ProductDetail from "./pages/productDetail/ProductDetail";
 import Contact from "./pages/contact/Contact";
@@ -30,7 +30,7 @@ function App() {
 
         <Switch>
           <Route exact path="/" render={() => <Home />} />
-          <Route path="/about" component={AboutUs} />
+          <Route path="/about" component={About_us} />
           <Route
             path="/products"
             render={() => <Products searchField={searchField} />}
