@@ -56,7 +56,8 @@ function About_us() {
                 <div class="section-tittle mb-60 text-center pt-10">
                   <h2>Motivation</h2>
                   <p class="pera">
-                    We built this project because Marcus forced us.
+                    we chose this project in order to deliver high quality
+                    furniture
                   </p>
                 </div>
               </div>
