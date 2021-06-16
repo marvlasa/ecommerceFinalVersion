@@ -54,8 +54,8 @@ function About_us() {
             <div class="row justify-content-center">
               <div class="col-lg-10">
                 <div class="section-tittle mb-60 text-center pt-10">
-                  <h2>Motivation</h2>
-                  <p class="pera">
+                  <h2 class="ml-5">Motivation</h2>
+                  <p class="pera ml-5">
                     we chose this project in order to deliver high quality
                     furniture
                   </p>
@@ -65,7 +65,7 @@ function About_us() {
             <div class="row justify-content-center">
               <div class="col-lg-10">
                 <div class="section-tittle mb-60 text-center pt-10">
-                  <h2>Tech Stack</h2>
+                  <h2 className="ml-5">Tech Stack</h2>
                   <p class="">
                     <i class="fab fa-html5 ml-5 mr-5 "></i>
                     <i class="fab fa-css3-alt mr-5"></i>
@@ -79,7 +79,7 @@ function About_us() {
             <div class="row justify-content-center">
               <div class="col-lg-10">
                 <div class="section-tittle text-center pt-10">
-                  <h2>Team</h2>
+                  <h2 className="ml-5">Team</h2>
                 </div>
               </div>
             </div>
@@ -129,7 +129,7 @@ function About_us() {
               </div>
             </div>
             <div class="col-lg-3 col-md-5 col-6">
-              <img src="assets/img/kevin3.jpeg" alt="" class="w-100" />
+              {/* <img src="assets/img/kevin3.jpeg" alt="" class="w-100" /> */}
             </div>
           </div>
         </div>
@@ -153,7 +153,7 @@ function About_us() {
               </div>
             </div>
             <div class="col-lg-3 col-md-5 col-6">
-              <img src="assets/img/martin3.jpeg" alt="" class="w-100" />
+              {/* <img src="assets/img/martin3.jpeg" alt="" class="w-100" /> */}
             </div>
           </div>
         </div>
@@ -176,7 +176,7 @@ function About_us() {
               </div>
             </div>
             <div class="col-lg-3 col-md-5 col-6">
-              <img src="assets/img/nicolas3.jpg" alt="" class="w-100" />
+              {/* <img src="assets/img/nicolas3.jpg" alt="" class="w-100" /> */}
             </div>
           </div>
         </div>
