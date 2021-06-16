@@ -105,7 +105,7 @@ function About_us() {
               </div>
             </div>
             <div class="col-lg-3 col-md-5 col-6">
-              <img src="assets/img/marcos3.jpeg" alt="" class="w-100" />
+              {/* <img src="assets/img/marcos3.jpeg" alt="" class="w-100" /> */}
             </div>
           </div>
         </div>
