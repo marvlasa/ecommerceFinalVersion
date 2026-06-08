@@ -1,207 +1,152 @@
-import React from "react";
-import Footer from "../../components/Footer";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Footer from "../../components/Footer";
+
+const ALL_ID = 0;
 
 function Products({ searchField }) {
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([{}]);
+  const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(ALL_ID);
 
-  const filteredProducts = products.filter((item) => {
-    return item.name.toLowerCase().includes(searchField.toLowerCase());
-  });
+  const filteredProducts = products.filter((item) =>
+    item.name.toLowerCase().includes((searchField || "").toLowerCase())
+  );
 
   useEffect(() => {
-    const URL = "https://ecommerce-back-end-fv.vercel.app/category";
-
-    const categories = async () => {
+    const fetchCategories = async () => {
       try {
-        const response = await axios.get(URL);
-        console.log(response.data.categories);
-        setCategories(response.data.categories);
+        const res = await axios.get(
+          "https://ecommerce-back-end-fv.vercel.app/category"
+        );
+        setCategories(res.data.categories || []);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     };
-    categories();
+    fetchCategories();
   }, []);
 
   useEffect(() => {
-    const URL = "https://ecommerce-back-end-fv.vercel.app/products";
-    const products = async () => {
+    const fetchProducts = async () => {
       try {
-        const response = await axios.get(URL);
-        setProducts(response.data);
-        console.log(response.data);
+        const res = await axios.get(
+          "https://ecommerce-back-end-fv.vercel.app/products"
+        );
+        setProducts(res.data);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     };
-    products();
+    fetchProducts();
   }, []);
 
-  const handleSomething = (id) => {
-    let URL = "";
-    if (id === 0) {
-      URL = "https://ecommerce-back-end-fv.vercel.app/products";
-    } else {
-      URL = `https://ecommerce-back-end-fv.vercel.app/products/category/${id}`;
+  async function handleCategorySelect(id) {
+    setActiveCategory(id);
+    const url =
+      id === ALL_ID
+        ? "https://ecommerce-back-end-fv.vercel.app/products"
+        : `https://ecommerce-back-end-fv.vercel.app/products/category/${id}`;
+    try {
+      const res = await axios.get(url);
+      setProducts(res.data);
+    } catch (err) {
+      console.error(err);
     }
-    const getProducts = async () => {
-      try {
-        const response = await axios.get(URL);
-        setProducts(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getProducts();
-  };
+  }
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
   return (
     <div>
-      <main>
-        <div class="slider-area">
-          <div class="slider-active">
-            <div
-              class="
-              single-slider
-              hero-overly2
-              slider-height2
-              d-flex
-              align-items-center
-              slider-bg2
-            "
-            >
-              <div class="container">
-                <div class="row">
-                  <div class="col-xl-6 col-lg-8 col-md-8">
-                    <div class="hero__caption hero__caption2">
-                      <h1 data-animation="fadeInUp" data-delay=".4s">
-                        Products
-                      </h1>
-                      <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                          <li class="breadcrumb-item">
-                            <a href="/#">Home</a>
-                          </li>
-                          <li class="breadcrumb-item">
-                            <a href="/#">Products</a>
-                          </li>
-                        </ol>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Page Banner */}
+      <div className="page-banner">
+        <div className="container">
+          <div className="page-banner-content">
+            <h1>Our Collection</h1>
+            <nav className="breadcrumb-nav">
+              <Link to="/">Home</Link>
+              <span className="breadcrumb-sep">/</span>
+              <span>Products</span>
+            </nav>
           </div>
         </div>
-        <section class="properties new-arrival fix">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-xl-7 col-lg-8 col-md-10">
-                <div
-                  class="section-tittle mb-60 text-center wow"
-                  data-wow-duration="1s"
-                  data-wow-delay=".2s"
-                >
-                  <h2>Make over your room</h2>
-                  <p>
-                    Lean into an easy, breezy summer: Warm woods and a
-                    shades-of-white foundation conjure a coastal state of mind
-                    wherever you are.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xl-12">
-                <div class="properties__button text-center">
-                  <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <a
-                        class="nav-item nav-link active"
-                        id="nav-Sofa-tab"
-                        data-toggle="tab"
-                        href="/#"
-                        role="tab"
-                        aria-controls="nav-Sofa"
-                        aria-selected="true"
-                        onClick={() => handleSomething(0)}
-                      >
-                        All products
-                      </a>
-                      {categories.map((category) => {
-                        return (
-                          <a
-                            class="nav-item nav-link"
-                            id="nav-Sofa-tab"
-                            data-toggle="tab"
-                            href="/#"
-                            role="tab"
-                            aria-controls="nav-Sofa"
-                            aria-selected="true"
-                            onClick={() => handleSomething(category.id)}
-                          >
-                            {category.name}
-                          </a>
-                        );
-                      })}{" "}
-                    </div>
-                  </nav>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              {filteredProducts &&
-                filteredProducts.map((item) => {
-                  return (
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div
-                        class="single-new-arrival mb-50 text-center wow fadeInUp"
-                        data-wow-duration="1s"
-                        data-wow-delay=".1s"
-                      >
-                        <div class="popular-img">
-                          <img
-                            src={item.image}
-                            className="img-fluid"
-                            alt={item.name}
-                          />
-                        </div>
-                        <div class="popular-caption">
-                          <h3>
-                            <Link to={"/product/" + item.slug}>
-                              {item.name}
-                            </Link>
-                          </h3>
-                          <span>${item.price}</span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-      <div id="back-top">
-        <a title="Go to Top" href="/products#">
-          {" "}
-          <i class="fas fa-level-up-alt"></i>
-        </a>
       </div>
+
+      {/* Products Section */}
+      <section className="products-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Explore the range</span>
+            <h2 className="section-title">Make Over Your Room</h2>
+            <p className="section-desc">
+              Warm woods and a refined foundation conjure a timeless state of
+              mind wherever you are.
+            </p>
+          </div>
+
+          {/* Category Tabs */}
+          <div className="category-tabs">
+            <button
+              className={`category-tab ${activeCategory === ALL_ID ? "active" : ""}`}
+              onClick={() => handleCategorySelect(ALL_ID)}
+            >
+              All Products
+            </button>
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                className={`category-tab ${activeCategory === cat.id ? "active" : ""}`}
+                onClick={() => handleCategorySelect(cat.id)}
+              >
+                {cat.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Product Grid */}
+          <div className="product-grid">
+            {filteredProducts.map((item) => (
+              <article className="product-card" key={item.id || item.slug}>
+                <div className="product-card-image">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="product-card-body">
+                  <h3 className="product-card-name">
+                    <Link to={"/product/" + item.slug}>{item.name}</Link>
+                  </h3>
+                  <p className="product-card-price">${item.price}</p>
+                  <div className="product-card-footer">
+                    <Link to={"/product/" + item.slug} className="btn-ghost">
+                      View Details
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {filteredProducts.length === 0 && (
+            <div className="cart-empty">
+              <h2>No products found</h2>
+              <p>Try a different category or search term.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <Footer />
+
+      <a href="/products#" className="back-top-btn" title="Back to top">
+        <i className="fas fa-chevron-up" />
+      </a>
     </div>
   );
 }

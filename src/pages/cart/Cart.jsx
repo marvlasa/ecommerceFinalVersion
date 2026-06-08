@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../components/Footer";
 import { useSelector, useDispatch } from "react-redux";
-import ModalCheckOut from "../../components/ModalCheckOut";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import Footer from "../../components/Footer";
+import ModalCheckOut from "../../components/ModalCheckOut";
 
 function Cart() {
   const [modalShow, setModalShow] = useState(false);
@@ -12,143 +12,165 @@ function Cart() {
   const cart = useSelector((state) => state.cart);
   const token = useSelector((state) => state.token);
   const user = useSelector((state) => state.user);
-  let history = useHistory();
+  const history = useHistory();
 
-  console.log("CART");
-  console.log(cart);
-  let total = 0;
-  cart.forEach((item, index) => {
-    total = total + item.price * item.quantity;
-    //total += item.price;
-  });
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const handleCheckOut = async (item) => {
-    if (user.name) {
-      const URL = "https://ecommerce-back-end-fv.vercel.app/order";
-      const axiosSettings = { headers: { Authorization: "Bearer " + token } };
-      try {
-        const response = await axios.post(URL, cart, axiosSettings);
-        console.log(response);
-        dispatch({
-          type: "RESET_CART",
-        });
-      } catch (err) {
-        console.log(err);
-      }
-      setModalShow(true);
-    } else {
+  async function handleCheckOut() {
+    if (!user.name) {
       history.push("/login");
+      return;
     }
-  };
+    try {
+      await axios.post(
+        "https://ecommerce-back-end-fv.vercel.app/order",
+        cart,
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      dispatch({ type: "RESET_CART" });
+      setModalShow(true);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  function addItem(product) {
+    dispatch({ type: "CART_ADD_ITEM", payload: product });
+  }
+
+  function removeItem(product) {
+    dispatch({ type: "REMOVE_ITEM_FROM_CART", payload: product });
+  }
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
+
   return (
     <div>
       <ModalCheckOut modalShow={modalShow} setModalShow={setModalShow} />
-      <section class="cart_area section-padding40">
-        <div class="container">
-          <div class="cart_inner">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cart.map((product) => {
-                    return (
-                      <tr>
+
+      {/* Page Banner */}
+      <div className="page-banner">
+        <div className="container">
+          <div className="page-banner-content">
+            <h1>Your Cart</h1>
+            <nav className="breadcrumb-nav">
+              <Link to="/">Home</Link>
+              <span className="breadcrumb-sep">/</span>
+              <span>Cart</span>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <section className="cart-section">
+        <div className="container">
+          {cart.length === 0 ? (
+            <div className="cart-empty">
+              <h2>Your cart is empty</h2>
+              <p style={{ marginBottom: "24px" }}>
+                Add some beautiful pieces to get started.
+              </p>
+              <Link to="/products" className="btn-primary">
+                Browse Products
+              </Link>
+            </div>
+          ) : (
+            <div className="cart-layout">
+              {/* Cart items table */}
+              <div className="cart-table-wrap">
+                <table className="cart-table">
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Qty</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cart.map((product) => (
+                      <tr key={product.id}>
                         <td>
-                          <div class="media">
-                            <div class="d-flex">
-                              <img src={product.image} alt="" />
-                            </div>
-                            <div class="media-body">
-                              <p>{product.name}</p>
-                            </div>
+                          <div className="cart-product-cell">
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="cart-product-img"
+                            />
+                            <span className="cart-product-name">
+                              {product.name}
+                            </span>
                           </div>
                         </td>
                         <td>
-                          <h5>${product.price}</h5>
+                          <span className="cart-price">${product.price}</span>
                         </td>
                         <td>
-                          <div class="product_count">
-                            <span
-                              className="input-number-decrement minus-sign"
-                              onClick={() =>
-                                dispatch({
-                                  type: "REMOVE_ITEM_FROM_CART",
-                                  payload: product,
-                                })
-                              }
+                          <div className="qty-stepper">
+                            <button
+                              className="qty-btn minus-sign"
+                              onClick={() => removeItem(product)}
                             >
-                              <i className="ti-minus"></i>
-                            </span>
+                              &minus;
+                            </button>
                             <input
-                              class="input-number"
+                              className="qty-value"
                               type="text"
                               value={product.quantity}
-                              min="0"
-                              max="10"
+                              readOnly
                             />
-
-                            <span
-                              className="input-number-increment plus-sign"
-                              onClick={() =>
-                                dispatch({
-                                  type: "CART_ADD_ITEM",
-                                  payload: product,
-                                })
-                              }
+                            <button
+                              className="qty-btn plus-sign"
+                              onClick={() => addItem(product)}
                             >
-                              <i class="ti-plus"></i>
-                            </span>
+                              +
+                            </button>
                           </div>
                         </td>
                         <td>
-                          <h5>${product.price * product.quantity}</h5>
+                          <span className="cart-price">
+                            ${product.price * product.quantity}
+                          </span>
                         </td>
                       </tr>
-                    );
-                  })}
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <h5>Total</h5>
-                    </td>
-                    <td>
-                      <h5>${total}</h5>
-                    </td>
-                  </tr>
-                  <tr class="shipping_area"></tr>
-                </tbody>
-              </table>
-              <div class="checkout_btn_inner float-right">
-                <Link to="/products" className="btn">
-                  Continue Shopping
-                </Link>
-                <div className="checkout_btn_inner mt-5">
-                  <button onClick={handleCheckOut} class="btn checkout_btn">
-                    Proceed to checkout
+              {/* Summary sidebar */}
+              <div className="cart-summary">
+                <h3>Order Summary</h3>
+
+                <div className="summary-row">
+                  <span>Subtotal</span>
+                  <span>${total}</span>
+                </div>
+                <div className="summary-row">
+                  <span>Shipping</span>
+                  <span style={{ color: "var(--instock)" }}>Free</span>
+                </div>
+                <div className="summary-row total">
+                  <span>Total</span>
+                  <span className="summary-total-value">${total}</span>
+                </div>
+
+                <div className="cart-summary-actions">
+                  <button className="btn-primary" onClick={handleCheckOut}>
+                    Proceed to Checkout
                   </button>
+                  <Link to="/products" className="btn-outline">
+                    Continue Shopping
+                  </Link>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
+
       <Footer />
     </div>
   );

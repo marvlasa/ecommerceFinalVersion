@@ -1,89 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
-  let history = useHistory();
+  const history = useHistory();
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    const URL = "https://ecommerce-back-end-fv.vercel.app/token";
-
+    setError("");
     try {
-      const response = await axios.post(URL, {
-        email,
-        password,
-      });
-
-      dispatch({ type: "USER", payload: response.data.user });
-      dispatch({ type: "TOKEN", payload: response.data.user });
+      const res = await axios.post(
+        "https://ecommerce-back-end-fv.vercel.app/token",
+        { email, password }
+      );
+      dispatch({ type: "USER", payload: res.data.user });
+      dispatch({ type: "TOKEN", payload: res.data.user });
       history.push("/");
     } catch (err) {
-      console.log(err);
+      setError("Invalid email or password. Please try again.");
     }
-  };
+  }
 
   return (
-    <div>
-      <main class="login-bg">
-        <div class="login-form-area">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-xl-7 col-lg-8">
-                <form onSubmit={handleSubmit} class="login-form">
-                  <div class="login-heading">
-                    <span>Login</span>
-                    <p>Enter Login details to get access</p>
-                  </div>
-                  <div class="input-box">
-                    <div class="single-input-fields">
-                      <label>Email Address</label>
-                      <input
-                        type="text"
-                        placeholder="Email address"
-                        onInput={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
-                    <div class="single-input-fields">
-                      <label>Password</label>
-                      <input
-                        type="password"
-                        placeholder="Enter Password"
-                        onInput={(e) => setPassword(e.target.value)}
-                      />
-                    </div>
-                    <div class="single-input-fields login-check">
-                      <input type="checkbox" id="fruit1" name="keep-log" />
-                      <label for="fruit1">Keep me logged in</label>
-                      <a href="/#" class="f-right">
-                        Forgot Password?
-                      </a>
-                    </div>
-                  </div>
-                  <div class="login-footer">
-                    <p>
-                      Don’t have an account?
-                      <Link to="/register"> sign up </Link>
-                      here
-                    </p>
-                    <button type="submit" class="submit-btn3">
-                      Login
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+    <div className="auth-page">
+      <div className="auth-card">
+        <div className="auth-heading">
+          <h2>Welcome Back</h2>
+          <p>Sign in to access your account</p>
         </div>
-      </main>
+
+        {error && (
+          <p style={{ color: "var(--sale)", fontSize: "13px", marginBottom: "16px", textAlign: "center" }}>
+            {error}
+          </p>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-field">
+            <label htmlFor="login-email">Email Address</label>
+            <input
+              id="login-email"
+              type="email"
+              placeholder="your@email.com"
+              value={email}
+              onInput={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="login-password">Password</label>
+            <input
+              id="login-password"
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onInput={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="auth-footer">
+            <p>
+              Don't have an account?{" "}
+              <Link to="/register">Sign up here</Link>
+            </p>
+            <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center", padding: "13px" }}>
+              Sign In
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

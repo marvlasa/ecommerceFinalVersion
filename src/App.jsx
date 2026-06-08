@@ -12,7 +12,7 @@ import Account from "./pages/account/Account";
 import Cart from "./pages/cart/Cart";
 import Header from "./components/Header";
 import OrderDetail from "./pages/orderDetail/OrderDetail";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 
 function App() {
