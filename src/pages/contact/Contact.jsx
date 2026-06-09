@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
+import PageBanner from "../../components/PageBanner";
 
 function Contact() {
   useEffect(() => {
@@ -9,19 +9,7 @@ function Contact() {
 
   return (
     <div>
-      {/* Page Banner */}
-      <div className="page-banner">
-        <div className="container">
-          <div className="page-banner-content">
-            <h1>Contact Us</h1>
-            <nav className="breadcrumb-nav">
-              <Link to="/">Home</Link>
-              <span className="breadcrumb-sep">/</span>
-              <span>Contact</span>
-            </nav>
-          </div>
-        </div>
-      </div>
+      <PageBanner title="Contact Us" crumb="Contact" />
 
       {/* Contact Section */}
       <section className="contact-section">

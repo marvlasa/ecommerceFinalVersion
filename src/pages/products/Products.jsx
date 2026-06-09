@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Footer from "../../components/Footer";
+import PageBanner from "../../components/PageBanner";
 
 const ALL_ID = 0;
 
@@ -62,19 +63,7 @@ function Products({ searchField }) {
 
   return (
     <div>
-      {/* Page Banner */}
-      <div className="page-banner">
-        <div className="container">
-          <div className="page-banner-content">
-            <h1>Our Collection</h1>
-            <nav className="breadcrumb-nav">
-              <Link to="/">Home</Link>
-              <span className="breadcrumb-sep">/</span>
-              <span>Products</span>
-            </nav>
-          </div>
-        </div>
-      </div>
+      <PageBanner title="Our Collection" crumb="Products" />
 
       {/* Products Section */}
       <section className="products-section">

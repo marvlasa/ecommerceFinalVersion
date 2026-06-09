@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import Footer from "../../components/Footer";
+import PageBanner from "../../components/PageBanner";
 
 function Account() {
   const [orders, setOrders] = useState([]);
@@ -56,19 +56,7 @@ function Account() {
 
   return (
     <div>
-      {/* Page Banner */}
-      <div className="page-banner">
-        <div className="container">
-          <div className="page-banner-content">
-            <h1>My Account</h1>
-            <nav className="breadcrumb-nav">
-              <Link to="/">Home</Link>
-              <span className="breadcrumb-sep">/</span>
-              <span>Account</span>
-            </nav>
-          </div>
-        </div>
-      </div>
+      <PageBanner title="My Account" crumb="Account" />
 
       <section className="account-section">
         <div className="container">

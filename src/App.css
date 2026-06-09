@@ -1677,7 +1677,6 @@
    ============================================================ */
 .plus-sign { cursor: pointer; }
 .minus-sign { cursor: pointer; }
-.text-center { text-align: center; }
 .mt-4 { margin-top: 16px; }
 .mt-5 { margin-top: 20px; }
 .mb-4 { margin-bottom: 16px; }
@@ -1687,19 +1686,4 @@
 .w-100 { width: 100%; }
 .d-flex { display: flex; }
 .align-items-center { align-items: center; }
-.justify-content-center { justify-content: center; }
-
-/* Legacy compat shims used in Account & Cart */
-.shadow-box {
-  box-shadow: 0 0 0 1px var(--border);
-  border-radius: var(--radius-sm);
-  margin-bottom: 20px;
-}
-.billing_css { display: flex; justify-content: center; }
-.BD-title { margin-top: 20px; color: var(--text); }
 .orderTitleModal { font-size: 1.2rem; color: var(--text); }
-.limit-img-size { max-width: 340px; max-height: 340px; }
-.btn-center { margin: 10px 0 0 0; }
-.translate-x { transform: translateX(15%); }
-.pera i { font-size: 4rem; color: var(--accent); }
-.margin-left-40 { margin-left: 0; }
