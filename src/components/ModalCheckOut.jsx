@@ -3,20 +3,21 @@ import { Modal, Button } from "react-bootstrap";
 function ModalCheckOut({ modalShow, setModalShow }) {
   return (
     <Modal
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
+      size="md"
+      aria-labelledby="checkout-modal-title"
       centered
       onHide={() => setModalShow(false)}
       show={modalShow}
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
+        <Modal.Title id="checkout-modal-title">Order Confirmed</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Hackfurniture</h4>
-        <p>Your order has been placed.</p>
+        <h4>Thank you — Maison Bois</h4>
+        <p>
+          Your order has been placed successfully. We will process and ship it
+          within 2–3 business days.
+        </p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={() => setModalShow(false)}>Close</Button>

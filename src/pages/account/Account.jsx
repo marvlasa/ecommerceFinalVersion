@@ -1,17 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import Footer from "../../components/Footer";
-import { Link } from "react-router-dom";
-import { Button, Modal } from "react-bootstrap";
+import PageBanner from "../../components/PageBanner";
 
-function BillingDetails() {
-  const [orders, setOrders] = useState([
-    /* { products: [{ name: "", ordersProduct: { price: 0, quantity: 0 } }] }, */
-  ]);
+function Account() {
+  const [orders, setOrders] = useState([]);
   const [lgShow, setLgShow] = useState(false);
-  const [id, setId] = useState(0);
+  const [selectedOrderId, setSelectedOrderId] = useState(0);
   const [totalModal, setTotalModal] = useState(0);
 
   const [name, setName] = useState("");
@@ -19,382 +16,236 @@ function BillingDetails() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  // const [password, setPassword] = useState("");
 
-  console.log(orders);
   const token = useSelector((state) => state.token);
   const user = useSelector((state) => state.user);
-  console.log(user);
-  console.log(token);
 
-  // const dispatch = useDispatch();
-
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    const URL = "https://ecommerce-back-end-fv.vercel.app/client";
-    const axiosSettings = { headers: { Authorization: "Bearer " + token } };
-
     try {
-      const response = await axios.post(
-        URL,
-        {
-          name,
-          lastName,
-          email,
-          phone,
-          address,
-        },
-        axiosSettings
+      await axios.post(
+        "https://ecommerce-back-end-fv.vercel.app/client",
+        { name, lastName, email, phone, address },
+        { headers: { Authorization: "Bearer " + token } }
       );
-      console.log(response);
-      // dispatch({ type: "USER", payload: response.data.user });
-      // dispatch({ type: "TOKEN", payload: response.data.user });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
-  };
+  }
 
   useEffect(() => {
-    const URL = "https://ecommerce-back-end-fv.vercel.app/orders";
-    const axiosSettings = { headers: { Authorization: "Bearer " + token } };
-    const getOrders = async () => {
+    const fetchOrders = async () => {
       try {
-        const response = await axios.get(URL, axiosSettings);
-        setOrders(response.data);
+        const res = await axios.get(
+          "https://ecommerce-back-end-fv.vercel.app/orders",
+          { headers: { Authorization: "Bearer " + token } }
+        );
+        setOrders(res.data);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     };
+    fetchOrders();
+  }, [token]);
 
-    getOrders();
-  }, []);
+  function openOrderModal(index, orderTotal) {
+    setSelectedOrderId(index);
+    setTotalModal(orderTotal);
+    setLgShow(true);
+  }
 
   return (
     <div>
-      <div class="slider-area">
-        <div class="slider-active">
-          <div
-            class="
-              single-slider
-              hero-overly2
-              slider-height2
-              d-flex
-              align-items-center
-              slider-bg2
-            "
-          >
-            <div class="container">
-              <div class="row">
-                <div class="col-xl-6 col-lg-8 col-md-8">
-                  <div class="hero__caption hero__caption2">
-                    <h1 data-animation="fadeInUp" data-delay=".4s">
-                      Account Information
-                    </h1>
-                    <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                          <a href="/#">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                          <a href="/#">Account</a>
-                        </li>
-                      </ol>
-                    </nav>
+      <PageBanner title="My Account" crumb="Account" />
+
+      <section className="account-section">
+        <div className="container">
+          <div className="account-layout">
+            {/* Billing Details form */}
+            <div className="account-card">
+              <h3>Billing Details</h3>
+              <form onSubmit={handleSubmit}>
+                <div className="form-row">
+                  <div className="form-field">
+                    <label>First Name</label>
+                    <input
+                      type="text"
+                      placeholder={user.name || "First name"}
+                      onInput={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-field">
+                    <label>Last Name</label>
+                    <input
+                      type="text"
+                      placeholder={user.lastName || "Last name"}
+                      onInput={(e) => setLastName(e.target.value)}
+                    />
                   </div>
                 </div>
-              </div>
+
+                <div className="form-row">
+                  <div className="form-field">
+                    <label>Phone</label>
+                    <input
+                      type="text"
+                      placeholder={user.phone || "Phone number"}
+                      onInput={(e) => setPhone(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-field">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      placeholder={user.email || "Email address"}
+                      onInput={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-field">
+                  <label>Country</label>
+                  <select className="form-field">
+                    <option value="UY">Uruguay</option>
+                    <option value="US">United States</option>
+                  </select>
+                </div>
+
+                <div className="form-field">
+                  <label>Address</label>
+                  <input
+                    type="text"
+                    placeholder={user.address || "Street address"}
+                    onInput={(e) => setAddress(e.target.value)}
+                  />
+                </div>
+
+                <button type="submit" className="btn-primary" style={{ marginTop: "8px" }}>
+                  Save Changes
+                </button>
+              </form>
+            </div>
+
+            {/* Orders */}
+            <div className="account-card">
+              <h3>Order History</h3>
+              {orders.length === 0 ? (
+                <p style={{ color: "var(--muted)", fontSize: "14px" }}>
+                  No orders yet.
+                </p>
+              ) : (
+                <table className="orders-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Item</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {orders.map((order, index) => {
+                      let orderTotal = 0;
+                      order.products.forEach((item) => {
+                        orderTotal +=
+                          item.ordersProduct.price * item.ordersProduct.quantity;
+                      });
+                      return (
+                        <tr
+                          key={index}
+                          style={{ cursor: "pointer" }}
+                          onClick={() => openOrderModal(index, orderTotal)}
+                        >
+                          <td>{order.createdAt.substring(0, 10)}</td>
+                          <td>{order.products[0].name}</td>
+                          <td>
+                            <span className="cart-price">${orderTotal}</span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         </div>
-      </div>
-      <div class="container pt-5 billing_details">
-        <div class="row billing_css">
-          <div class="col-md-7 shadow-box p-4 ">
-            <h3 className="BD-title">Billing Details</h3>
-            <form
-              class="row contact_form"
-              action="#"
-              method="post"
-              novalidate="novalidate"
-            >
-              <div class="col-md-6 form-group p_star">
-                <h4>{`${user.name} `}</h4>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder={`${user.name} `}
-                  id="first"
-                  name="name"
-                  onInput={(e) => setName(e.target.value)}
-                />
-                {/* <span class="placeholder" data-placeholder="First name"></span> */}
-              </div>
-              <div class="col-md-6 form-group p_star">
-                <h4>{`${user.lastName}`}</h4>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Last name*"
-                  id="last"
-                  name="name"
-                  onInput={(e) => setLastName(e.target.value)}
-                />
-                {/* <span class="placeholder" data-placeholder="Last name"></span> */}
-              </div>
+      </section>
 
-              <div class="col-md-6 form-group p_star">
-                {user.phone ? (
-                  <h4>{user.phone}</h4>
-                ) : (
-                  <h4>
-                    No phone in the sistem yet, do you want to add a phone?
-                  </h4>
-                )}
-                <input
-                  type="text"
-                  class="form-control"
-                  id="number"
-                  name="number"
-                  placeholder="Phone number"
-                  onInput={(e) => setPhone(e.target.value)}
-                />
-                {/* <span class="placeholder" data-placeholder="Phone number"></span> */}
-              </div>
-              <div class="col-md-6 form-group p_star">
-                <h4>{user.email}</h4>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="email"
-                  name="compemailany"
-                  placeholder="Email Address"
-                  onInput={(e) => setEmail(e.target.value)}
-                />
-                {/* <span class="placeholder" data-placeholder="Email Address"></span> */}
-              </div>
-
-              <div class="col-md-12 form-group p_star">
-                <select class="country_select">
-                  <option value="1">Uruguay</option>
-                </select>
-              </div>
-              <div class="col-md-12 form-group p_star">
-                {user.address ? (
-                  <h4>{user.address}</h4>
-                ) : (
-                  <h4>
-                    No address in the sistem yet, do you want to add an address?
-                  </h4>
-                )}
-                <input
-                  type="text"
-                  class="form-control"
-                  id="add1"
-                  name="add1"
-                  placeholder="Address line 01"
-                  onInput={(e) => setAddress(e.target.value)}
-                />
-                {/* <span
-                class="placeolder"
-                data-placeholder="Address line 01"
-              ></span> */}
-              </div>
-              <div class="col-md-12 form-group p_star">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="add2"
-                  name="add2"
-                  placeholder="Address line 02"
-                />
-                {/* <span
-                class="placeholder"
-                data-placeholder="Address line 02"
-              ></span> */}
-              </div>
-              <div class="col-md-12 form-group p_star">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="city"
-                  name="city"
-                  placeholder="City"
-                />
-                {/* <span class="placeholder" data-placeholder="Town/City"></span> */}
-              </div>
-
-              <div class="col-md-12 form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="zip"
-                  name="zip"
-                  placeholder="Postcode/ZIP"
-                />
-              </div>
-              <button
-                type="submit"
-                class="button button-contactForm boxed-btn justify-content-center btn-center"
-              >
-                Submit Changes
-              </button>
-            </form>
-          </div>
-          <div className="col-md-5">
-            <table class="table shadow-box">
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Name</th>
-                <th scope="col">Total</th>
-              </tr>
-              {orders.map((order, index) => {
-                let total = 0;
-                order.products.forEach((item) => {
-                  total =
-                    total +
-                    item.ordersProduct.price * item.ordersProduct.quantity;
-                });
-
-                return (
-                  <tr
-                    onClick={() => {
-                      setLgShow(true);
-                      setId(index);
-                      setTotalModal(total);
-                    }}
-                    id="tr"
-                  >
-                    <td>
-                      <div class="media">
-                        <div class="media-body">
-                          <p>{order.createdAt.substring(10, 0)}</p>
+      {/* Order detail modal */}
+      <Modal
+        size="lg"
+        show={lgShow}
+        onHide={() => setLgShow(false)}
+        aria-labelledby="order-modal-title"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="order-modal-title">Order Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {orders.length > 0 && orders[selectedOrderId] && (
+            <div className="cart-table-wrap">
+              <table className="cart-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {orders[selectedOrderId].products.map((product, i) => (
+                    <tr key={i}>
+                      <td>
+                        <div className="cart-product-cell">
+                          {product.image && (
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="cart-product-img"
+                            />
+                          )}
+                          <span className="cart-product-name orderTitleModal">
+                            {product.name}
+                          </span>
                         </div>
-                      </div>
-                    </td>
+                      </td>
+                      <td>
+                        <span className="cart-price">
+                          ${product.ordersProduct.price}
+                        </span>
+                      </td>
+                      <td>{product.ordersProduct.quantity}</td>
+                      <td>
+                        <span className="cart-price">
+                          ${product.ordersProduct.price * product.ordersProduct.quantity}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                  <tr>
+                    <td colSpan="2" />
+                    <td style={{ fontWeight: 600, color: "var(--text)" }}>Total</td>
                     <td>
-                      <h5>{order.products[0].name}</h5>
-                    </td>
-                    <td>
-                      <h5>${total}</h5>
+                      <span className="cart-price" style={{ fontSize: "17px" }}>
+                        ${totalModal}
+                      </span>
                     </td>
                   </tr>
-                );
-              })}
-              <Modal
-                size="lg"
-                show={lgShow}
-                onHide={() => setLgShow(false)}
-                aria-labelledby="example-modal-sizes-title-lg"
-              >
-                <Modal.Header closeButton>
-                  <Modal.Title id="example-modal-sizes-title-lg"></Modal.Title>{" "}
-                  <p>{/* {order.createdAt} */}</p>
-                </Modal.Header>
-                <Modal.Body>
-                  <div>
-                    {
-                      <div>
-                        <section class="cart_area section-padding40">
-                          <div class="container">
-                            <div class="cart_inner">
-                              <div class="table-responsive">
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Product</th>
-                                      <th scope="col">Price</th>
-                                      <th scope="col">Quantity</th>
-                                      <th scope="col">Total</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    {!orders[0] ? (
-                                      <div></div>
-                                    ) : (
-                                      orders[id].products.map((product) => {
-                                        return (
-                                          <tr>
-                                            <td>
-                                              <p class="orderTitleModal">
-                                                {product.name}
-                                              </p>
-                                              <div class="media">
-                                                <div class="d-flex">
-                                                  <img
-                                                    src={product.image}
-                                                    alt=""
-                                                  />
-                                                </div>
-                                                <div class="media-body"></div>
-                                              </div>
-                                            </td>
-                                            <td>
-                                              <h5>
-                                                ${product.ordersProduct.price}
-                                              </h5>
-                                            </td>
-                                            <td>
-                                              <div class="product_count">
-                                                <input
-                                                  class="input-number"
-                                                  type="text"
-                                                  value={
-                                                    product.ordersProduct
-                                                      .quantity
-                                                  }
-                                                  min="0"
-                                                  max="10"
-                                                />
-                                              </div>
-                                            </td>
-                                            <td>
-                                              <h5>
-                                                $
-                                                {product.ordersProduct.price *
-                                                  product.ordersProduct
-                                                    .quantity}
-                                              </h5>
-                                            </td>
-                                          </tr>
-                                        );
-                                      })
-                                    )}
-                                    <tr>
-                                      <td></td>
-                                      <td></td>
-                                      <td>
-                                        <h5>Total</h5>
-                                      </td>
-                                      <td>
-                                        <h5>${totalModal}</h5>
-                                      </td>
-                                    </tr>
-                                    <tr class="shipping_area"></tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
-                        </section>
-                      </div>
-                    }
-                  </div>
-                </Modal.Body>
-              </Modal>
-            </table>
-          </div>
-        </div>
-      </div>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => setLgShow(false)}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+
       <Footer />
-      {/* <div id="back-top">
-        <a title="Go to Top" href="/#">
-          {" "}
-          <i class="fas fa-level-up-alt"></i>
-        </a>
-      </div> */}
     </div>
   );
 }
 
-export default BillingDetails;
+export default Account;

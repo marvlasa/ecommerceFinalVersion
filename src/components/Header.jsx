@@ -1,200 +1,136 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function Header({ setSearchField }) {
-  function handleChange(event) {
-    setSearchField(event.target.value);
+  const location = useLocation();
+  const user = useSelector((state) => state.user);
+  const cart = useSelector((state) => state.cart);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const cartQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  function handleSearchChange(e) {
+    setSearchField(e.target.value);
   }
 
-  let location = useLocation();
-  const user = useSelector((state) => state.user);
-  // console.log("----------------------");
-  // console.log("helloo", location.pathname);
-  // console.log("----------------------");
-
-  const cart = useSelector((state) => state.cart);
-  let cartQuantity = 0;
-  cart.forEach((item, index) => {
-    cartQuantity = cartQuantity + item.quantity;
-    //total += item.price;
-  });
-  const [headerMenu, setHeaderMenu] = useState("none");
-  const handleLogOut = () => {
+  function handleLogOut() {
     localStorage.clear();
     window.location.reload();
-  };
-  const handleClick = () => {
-    if (headerMenu === "none") {
-      setHeaderMenu("block");
-    } else {
-      setHeaderMenu("none");
-    }
-  };
-  return (
-    <header>
-      <div class="header-area">
-        <div class="main-header header-sticky">
-          <div class="container-fluid">
-            <div
-              class="
-                  row
-                  menu-wrapper
-                  align-items-center
-                  justify-content-between
-                "
-            >
-              <div class="header-left d-flex align-items-center">
-                <div class="logo">
-                  <img
-                    src="assets/img/logo/logo.png"
-                    alt=""
-                    style={{ width: "140px" }}
-                  />
-                </div>
-                <div class="logo2">
-                  <a href="/#">
-                    <img src="assets/img/logo/logo2.png" alt="" />
-                  </a>
-                </div>
-                <div class="main-menu d-none d-lg-block">
-                  <nav>
-                    <ul id="navigation">
-                      <li>
-                        <Link to="/">Home</Link>
-                      </li>
-                      <li>
-                        <Link to="/products">Products</Link>
-                      </li>
-                      <li>
-                        <Link to="/about">About</Link>
-                      </li>
-                      <li>
-                        <Link to="/contact">Contact</Link>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-              <div class="header-right1 d-flex align-items-center">
-                <div class="search">
-                  <ul class="d-flex align-items-center">
-                    {location.pathname === "/products" ? (
-                      <li>
-                        <form action="#" class="form-box f-right">
-                          <input
-                            type="text"
-                            name="Search"
-                            placeholder="Search products"
-                            onChange={handleChange}
-                          />
-                          <div class="search-icon">
-                            <i class="ti-search"></i>
-                          </div>
-                        </form>
-                      </li>
-                    ) : null}
-                    <li>
-                      {user.name ? (
-                        <Link to="/account" class="account-btn">
-                          {user.name}
-                        </Link>
-                      ) : (
-                        <Link to="/login" class="account-btn">
-                          Login
-                        </Link>
-                      )}
-                    </li>
-                    <li>
-                      <Link
-                        to="/"
-                        onClick={handleLogOut}
-                        className="account-btn margin-left-40"
-                      >
-                        Logout
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/cart">
-                        <div class="card-stor">
-                          <img src="assets/img/icon/card.svg" alt="" />
-                          <span>{cartQuantity}</span>
-                        </div>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+  }
 
-              <div class="col-12">
-                <div class="mobile_menu d-block d-lg-none">
-                  <div class="slicknav_menu">
-                    <a
-                      href="/#"
-                      aria-haspopup="true"
-                      role="button"
-                      tabindex="0"
-                      class="slicknav_btn slicknav_collapsed"
-                      style={{ outline: "none" }}
-                      onClick={handleClick}
-                    >
-                      <span class="slicknav_menutxt">MENU</span>
-                      <span class="slicknav_icon">
-                        <span class="slicknav_icon-bar"></span>
-                        <span class="slicknav_icon-bar"></span>
-                        <span class="slicknav_icon-bar"></span>
-                      </span>
-                    </a>
-                    <ul
-                      class="slicknav_nav slicknav_hidden"
-                      aria-hidden="true"
-                      role="menu"
-                      style={{ display: headerMenu }}
-                    >
-                      <li>
-                        <Link to="/" role="menuitem" tabIndex="-1">
-                          Home
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/products" role="menuitem" tabIndex="-1">
-                          Products
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/about" role="menuitem" tabIndex="-1">
-                          About
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/contact" role="menuitem" tabIndex="-1">
-                          Contact
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/login" role="menuitem" tabIndex="-1">
-                          My Account
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/cart" role="menuitem" tabIndex="-1">
-                          Cart
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/logout" role="menuitem" tabIndex="-1">
-                          Logout
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/products", label: "Products" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Contact" },
+  ];
+
+  return (
+    <header className="site-header">
+      <div className="container">
+        <div className="header-inner">
+          {/* Logo */}
+          <Link to="/" className="site-logo">
+            Maison <span>Bois</span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="main-nav">
+            {navLinks.map(({ to, label }) => (
+              <Link
+                key={to}
+                to={to}
+                className={location.pathname === to ? "active" : ""}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Actions */}
+          <div className="header-actions">
+            {/* Search — only on products page */}
+            {location.pathname === "/products" && (
+              <div className="header-search">
+                <i className="fas fa-search header-search-icon" />
+                <input
+                  type="text"
+                  placeholder="Search products"
+                  onChange={handleSearchChange}
+                />
               </div>
-            </div>
+            )}
+
+            {/* Account */}
+            {user.name ? (
+              <Link to="/account" className="btn-account">
+                {user.name}
+              </Link>
+            ) : (
+              <Link to="/login" className="btn-account">
+                Login
+              </Link>
+            )}
+
+            {user.name && (
+              <button className="btn-account" onClick={handleLogOut}>
+                Logout
+              </button>
+            )}
+
+            {/* Cart */}
+            <Link to="/cart" className="cart-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+              <span className="cart-count">{cartQuantity}</span>
+            </Link>
+
+            {/* Mobile toggle */}
+            <button
+              className="mobile-menu-btn"
+              onClick={() => setMobileOpen((o) => !o)}
+              aria-label="Toggle menu"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Nav */}
+      <nav className={`mobile-nav ${mobileOpen ? "open" : ""}`}>
+        {navLinks.map(({ to, label }) => (
+          <Link key={to} to={to} onClick={() => setMobileOpen(false)}>
+            {label}
+          </Link>
+        ))}
+        {user.name ? (
+          <>
+            <Link to="/account" onClick={() => setMobileOpen(false)}>
+              My Account
+            </Link>
+            <button
+              className="btn-account"
+              style={{ textAlign: "left", padding: "10px 24px", display: "block", width: "100%", fontSize: "14px", color: "var(--muted-2)", background: "none", border: "none", cursor: "pointer" }}
+              onClick={handleLogOut}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link to="/login" onClick={() => setMobileOpen(false)}>
+            Login
+          </Link>
+        )}
+        <Link to="/cart" onClick={() => setMobileOpen(false)}>
+          Cart ({cartQuantity})
+        </Link>
+      </nav>
     </header>
   );
 }
